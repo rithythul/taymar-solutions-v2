@@ -1,33 +1,31 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Nav } from "@/components/site/nav";
+import { Footer } from "@/components/site/footer";
 
 export const metadata: Metadata = {
-  title: "Taymar Solutions | Pipeline Growth via Cold Outreach",
-  description: "Performance-driven sales outsourcing. We generate qualified leads; you close the revenue.",
+  title: "Taymar Solutions — Pipeline that pays for itself.",
+  description:
+    "Commission-first outbound. We find your buyers, qualify them, and book the meetings — you only pay when we deliver.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-[#110c0c] text-white">
-        <header className="sticky top-0 bg-[#110c0c]/80 backdrop-blur-md border-b border-neutral-800">
-          <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="/" className="text-xl font-bold tracking-tight text-white">TAYMAR</a>
-            <div className="space-x-6 text-sm font-medium text-neutral-400">
-              <a href="/about" className="hover:text-white">About</a>
-              <a href="/services" className="hover:text-white">Services</a>
-              <a href="/contact" className="px-4 py-2 bg-[#ff2e2e] text-white rounded hover:bg-[#e62828] transition">Contact</a>
-            </div>
-          </nav>
-        </header>
-        <main className="min-h-[calc(100vh-140px)]">{children}</main>
-        <footer className="border-t border-neutral-800 py-8 text-center text-sm text-neutral-600">
-          © {new Date().getFullYear()} Taymar Solutions, LLC. Performance-driven results.
-        </footer>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..700&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>
+        <Nav />
+        <main className="page-enter">{children}</main>
+        <Footer />
       </body>
     </html>
   );
