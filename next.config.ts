@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  turbopack: {
+    root: "/home/KOOMPI/workspace/taymar-solutions-v2",
+  },
 };
 
 export default nextConfig;
