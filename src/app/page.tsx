@@ -1,246 +1,191 @@
-import {
-  Phone,
-  CalendarCheck,
-  Mail,
-  Filter,
-  Target,
-  ArrowRight,
-  CheckCircle2,
-  Building2,
-  Factory,
-  Stethoscope,
-  Landmark,
-  GraduationCap,
-  Briefcase,
-} from "lucide-react";
+import { Btn, CtaBlock, Eyebrow, Placeholder, Stat } from "@/components/site/atoms";
 
-const services = [
-  {
-    icon: Phone,
-    title: "Outbound Sales & Cold Calling",
-    description:
-      "Targeted cold outreach to decision-makers. Real conversations, not ignored scripts.",
-  },
-  {
-    icon: CalendarCheck,
-    title: "Appointment Setting",
-    description:
-      "We qualify leads and book meetings with prospects who match your ICP.",
-  },
-  {
-    icon: Mail,
-    title: "Cold Email Outreach",
-    description:
-      "Data-driven email campaigns designed to drive responses, not just volume.",
-  },
-  {
-    icon: Filter,
-    title: "Lead Qualification",
-    description:
-      "Filter and qualify prospects to ensure every opportunity is sales-ready.",
-  },
-];
-
-const whyChoose = [
-  "Commission-first model — we only win when you do",
-  "Multi-channel outreach across phone, email, and LinkedIn",
-  "ICP-targeted research before first contact",
-  "200+ meetings booked and counting",
-  "Dedicated team, not a fragmented freelancer",
-  "Transparent reporting tied to your pipeline",
-];
-
-const industries = [
-  { icon: Building2, label: "Real Estate" },
-  { icon: Factory, label: "Manufacturing" },
-  { icon: Stethoscope, label: "Healthcare" },
-  { icon: Landmark, label: "Financial Services" },
-  { icon: GraduationCap, label: "Education" },
-  { icon: Briefcase, label: "Professional Services" },
-];
-
-export default function Home() {
+export default function HomePage() {
   return (
     <div>
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-primary-dark via-primary to-primary-light text-white">
-        <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-widest text-slate-300 mb-4 fade-in">
-              Performance-Driven Sales Outsourcing
-            </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight fade-in">
-              We Build Your Pipeline.
+      <section style={{ padding: "60px 40px 100px", maxWidth: 1280, margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 80, alignItems: "end" }}>
+          <div>
+            <Eyebrow num="01">Sales outsourcing, performance-first</Eyebrow>
+            <h1
+              style={{
+                fontFamily: "'Newsreader', serif",
+                fontSize: "clamp(56px, 7.2vw, 116px)",
+                lineHeight: 0.95,
+                letterSpacing: "-0.035em",
+                fontWeight: 300,
+                margin: "32px 0 0",
+                color: "var(--ink)",
+              }}
+            >
+              Pipeline that <em style={{ fontStyle: "italic", color: "var(--accent)" }}>pays</em>
               <br />
-              <span className="text-slate-200">You Close the Revenue.</span>
+              for itself.
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-slate-200 max-w-2xl leading-relaxed fade-in">
-              Taymar Solutions handles cold outreach, lead qualification, and
-              appointment setting — so your sales team can focus on what they do
-              best.
+            <p style={{ fontFamily: "'Geist', sans-serif", fontSize: 19, lineHeight: 1.55, color: "var(--muted)", maxWidth: 560, marginTop: 36 }}>
+              Taymar Solutions is a commission-first outbound team. We find your buyers, qualify them, and book the meetings — you only pay when we deliver. No retainers, no risk, no head-count.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4 fade-in">
-              <a
-                href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-accent text-white font-semibold rounded-lg hover:bg-accent-hover transition-colors"
-              >
-                Schedule a Consultation
-                <ArrowRight size={18} />
-              </a>
-              <a
-                href="/services"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-white/10 text-white font-semibold rounded-lg hover:bg-white/20 transition-colors border border-white/20"
-              >
-                View Services
-              </a>
+            <div style={{ display: "flex", gap: 16, marginTop: 40, alignItems: "center" }}>
+              <Btn size="lg" href="/contact">Book a discovery call</Btn>
+              <Btn variant="plain" href="/services">How it works</Btn>
+            </div>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            <Placeholder label="hero — sales floor / outreach" aspect="3/4" />
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "var(--muted)", letterSpacing: "0.1em", textTransform: "uppercase", display: "flex", justifyContent: "space-between" }}>
+              <span>Est. 2024</span>
+              <span>Tampa, FL</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Intro / Company Overview */}
-      <section className="py-20 md:py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 fade-in">
-              Your Outsourced Sales Engine
-            </h2>
-            <p className="mt-6 text-lg text-slate-500 leading-relaxed fade-in">
-              Taymar Solutions, LLC is a performance-driven sales outsourcing firm
-              that generates qualified opportunities for businesses ready to scale.
-              We partner with companies that need consistent pipeline growth
-              without the overhead of building an in-house outbound team.
-            </p>
-            <p className="mt-4 text-lg text-slate-500 leading-relaxed fade-in">
-              Our commission-first model aligns our success with yours — minimal
-              upfront cost, maximum accountability.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Highlights */}
-      <section className="py-20 md:py-24 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 fade-in">
-              What We Do
-            </h2>
-            <p className="mt-4 text-slate-500 max-w-xl mx-auto fade-in">
-              End-to-end outbound sales support, from research to booked meetings.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6 stagger-children">
-            {services.map(({ icon: Icon, title, description }) => (
-              <div
-                key={title}
-                className="bg-white rounded-xl p-8 border border-slate-200 hover:shadow-lg hover:border-slate-300 transition-all fade-in"
-              >
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
-                  <Icon className="text-primary" size={24} />
-                </div>
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">
-                  {title}
-                </h3>
-                <p className="text-slate-500 leading-relaxed">{description}</p>
-              </div>
+      <section style={{ borderTop: "1px solid var(--line)", borderBottom: "1px solid var(--line)", padding: "20px 0", overflow: "hidden", background: "var(--surface)" }}>
+        <div style={{ display: "flex", gap: 64, fontFamily: "'JetBrains Mono', monospace", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--muted)", whiteSpace: "nowrap", animation: "marquee 40s linear infinite" }}>
+          {"Cold outreach · Lead qualification · Appointment setting · Multi-channel · Phone · Email · LinkedIn · ICP definition · Objection handling · Pipeline reporting · "
+            .repeat(3)
+            .split(" · ")
+            .map((s, i) => (
+              <span key={i}>{s}</span>
             ))}
-          </div>
-          <div className="mt-10 text-center fade-in">
-            <a
-              href="/services"
-              className="inline-flex items-center gap-2 text-primary font-semibold hover:text-primary-light transition-colors"
-            >
-              Explore all services
-              <ArrowRight size={16} />
-            </a>
+        </div>
+      </section>
+
+      <section style={{ padding: "120px 40px", maxWidth: 1280, margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 80 }}>
+          <Eyebrow num="02">A short introduction</Eyebrow>
+          <div>
+            <p style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.25, letterSpacing: "-0.02em", color: "var(--ink)", fontWeight: 300, margin: 0 }}>
+              We partner with companies that need consistent pipeline growth — but don&apos;t want the cost, ramp time, or risk of building a full in-house outbound team.{" "}
+              <em style={{ color: "var(--accent)" }}>Our model is simple: we win when you win.</em>
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Taymar */}
-      <section className="py-20 md:py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-14 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 fade-in">
-                Why Choose Taymar?
+      <section style={{ padding: "100px 40px", maxWidth: 1280, margin: "0 auto" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", marginBottom: 60 }}>
+          <div>
+            <Eyebrow num="03">What we do</Eyebrow>
+            <h2 style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(40px, 4.5vw, 72px)", letterSpacing: "-0.025em", lineHeight: 1, fontWeight: 300, margin: "24px 0 0" }}>
+              Three motions.
+              <br />
+              One outcome.
+            </h2>
+          </div>
+          <Btn variant="plain" href="/services">All services</Btn>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 0, borderTop: "1px solid var(--ink)" }}>
+          {[
+            { n: "01", title: "Cold Outreach", body: "Multi-channel sequences across phone, email, and LinkedIn — built around your ICP, voiced like a human, paced to land." },
+            { n: "02", title: "Lead Qualification", body: "Every conversation runs through a structured qualification framework. You only see opportunities that match your criteria." },
+            { n: "03", title: "Appointment Setting", body: "Booked meetings on your calendar, with full context delivered to your sales team — handoff-ready, never cold." },
+          ].map((s, i) => (
+            <div
+              key={i}
+              style={{
+                padding: "40px 32px 48px",
+                borderRight: i < 2 ? "1px solid var(--line)" : "none",
+                borderBottom: "1px solid var(--ink)",
+                display: "flex",
+                flexDirection: "column",
+                gap: 20,
+                minHeight: 300,
+              }}
+            >
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "var(--accent)", letterSpacing: "0.1em" }}>{s.n}</div>
+              <h3 style={{ fontFamily: "'Newsreader', serif", fontSize: 32, fontWeight: 400, letterSpacing: "-0.02em", margin: 0 }}>{s.title}</h3>
+              <p style={{ fontFamily: "'Geist', sans-serif", fontSize: 15, lineHeight: 1.6, color: "var(--muted)", margin: 0, flex: 1 }}>{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ background: "var(--ink)", color: "var(--bg)", padding: "120px 40px", marginTop: 60 }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: 80, alignItems: "start" }}>
+            <div style={{ position: "sticky", top: 120 }}>
+              <Eyebrow num="04">Why Taymar</Eyebrow>
+              <h2 style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(40px, 4.5vw, 64px)", lineHeight: 1, letterSpacing: "-0.025em", fontWeight: 300, margin: "24px 0 0", color: "var(--bg)" }}>
+                Skin in the
+                <br />
+                same game.
               </h2>
-              <p className="mt-4 text-slate-500 leading-relaxed fade-in">
-                We&apos;re not another agency. We&apos;re a results-aligned partner that
-                earns through performance, not retainers.
+              <p style={{ fontFamily: "'Geist', sans-serif", fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.7)", marginTop: 32, maxWidth: 360 }}>
+                Most outbound agencies invoice whether or not the phone rings. We don&apos;t. The structure forces alignment — if your pipeline isn&apos;t moving, neither is ours.
               </p>
             </div>
-            <ul className="space-y-4">
-              {whyChoose.map((item) => (
-                <li key={item} className="flex items-start gap-3 fade-in">
-                  <CheckCircle2
-                    className="text-primary shrink-0 mt-0.5"
-                    size={20}
-                  />
-                  <span className="text-slate-700">{item}</span>
-                </li>
+            <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+              {[
+                ["Commission-first pricing", "You don't carry the burden of a base. We earn on results, so we're motivated to deliver them."],
+                ["No long-term lock-in", "Month-to-month engagements. Stay because the numbers work, not because a contract says you have to."],
+                ["Real humans on the phone", "We don't outsource the actual conversations. Your prospects talk to people who can hold a real exchange."],
+                ["Process you can audit", "Cadence, scripts, lists, and reporting — fully documented. You see what's running, what's working, and what isn't."],
+                ["Built for the messy middle", "Whether you're validating a new offer or scaling an established one, the model flexes to where you actually are."],
+              ].map(([t, b], i) => (
+                <div
+                  key={i}
+                  style={{
+                    padding: "32px 0",
+                    borderBottom: i < 4 ? "1px solid rgba(255,255,255,0.12)" : "none",
+                    borderTop: i === 0 ? "1px solid rgba(255,255,255,0.12)" : "none",
+                    display: "grid",
+                    gridTemplateColumns: "auto 1fr",
+                    gap: 32,
+                  }}
+                >
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "rgba(255,255,255,0.4)" }}>{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3 style={{ fontFamily: "'Newsreader', serif", fontSize: 26, fontWeight: 400, letterSpacing: "-0.015em", margin: 0, color: "var(--bg)" }}>{t}</h3>
+                    <p style={{ fontFamily: "'Geist', sans-serif", fontSize: 15, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", margin: "10px 0 0", maxWidth: 540 }}>{b}</p>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Industries Served */}
-      <section className="py-20 md:py-24 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 fade-in">
-              Industries We Serve
+      <section style={{ padding: "120px 40px", maxWidth: 1280, margin: "0 auto" }}>
+        <Eyebrow num="05">By the numbers</Eyebrow>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 40, marginTop: 60, paddingTop: 60, borderTop: "1px solid var(--line)" }}>
+          <Stat value="0" suffix="$" label="Up-front cost. You don't pay until a meeting books." />
+          <Stat value="38" label="Industries served across SaaS, services, and trades." />
+          <Stat value="14" suffix=" days" label="Typical ramp from kickoff to first booked call." />
+          <Stat value="3.2" suffix="x" label="Average pipeline lift in our clients' first quarter." />
+        </div>
+      </section>
+
+      <section style={{ padding: "60px 40px 120px", maxWidth: 1280, margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 80, alignItems: "start" }}>
+          <div>
+            <Eyebrow num="06">Who we serve</Eyebrow>
+            <h2 style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(36px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.025em", fontWeight: 300, margin: "24px 0 32px" }}>
+              Built for B2B teams that
+              <br />
+              <em style={{ color: "var(--accent)" }}>need motion</em>, not theater.
             </h2>
-            <p className="mt-4 text-slate-500 max-w-xl mx-auto fade-in">
-              Proven results across sectors where outbound outreach drives growth.
-            </p>
+            <Btn variant="ghost" href="/industries">See all industries</Btn>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 stagger-children">
-            {industries.map(({ icon: Icon, label }) => (
-              <div
-                key={label}
-                className="bg-white rounded-xl p-6 border border-slate-200 text-center hover:shadow-md hover:border-primary/30 transition-all fade-in"
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {["B2B SaaS & technology", "Professional services", "Financial & insurance", "Construction & trades", "Healthcare services", "Logistics & supply chain"].map((label, i) => (
+              <a
+                key={i}
+                href="/industries"
+                style={{ padding: "28px 0", borderBottom: "1px solid var(--line)", display: "flex", justifyContent: "space-between", alignItems: "center", textDecoration: "none", color: "var(--ink)" }}
               >
-                <Icon className="text-primary mx-auto mb-3" size={28} />
-                <p className="text-sm font-medium text-slate-700">{label}</p>
-              </div>
+                <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "var(--muted)" }}>{String(i + 1).padStart(2, "0")}</span>
+                  <span style={{ fontFamily: "'Newsreader', serif", fontSize: 28, fontWeight: 400, letterSpacing: "-0.015em" }}>{label}</span>
+                </div>
+                <span style={{ color: "var(--muted)" }}>↗</span>
+              </a>
             ))}
           </div>
-          <div className="mt-10 text-center fade-in">
-            <a
-              href="/industries"
-              className="inline-flex items-center gap-2 text-primary font-semibold hover:text-primary-light transition-colors"
-            >
-              See how we help each industry
-              <ArrowRight size={16} />
-            </a>
-          </div>
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="py-20 md:py-24 bg-primary text-white">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold fade-in">
-            Ready to Scale Your Pipeline?
-          </h2>
-          <p className="mt-4 text-lg text-slate-200 fade-in">
-            Book a free consultation. No commitments, no retainers — just a
-            conversation about growth.
-          </p>
-          <div className="mt-8 fade-in">
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-accent text-white font-semibold rounded-lg hover:bg-accent-hover transition-colors"
-            >
-              Schedule a Call
-              <ArrowRight size={18} />
-            </a>
-          </div>
-        </div>
-      </section>
+      <CtaBlock />
     </div>
   );
 }

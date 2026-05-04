@@ -1,215 +1,141 @@
-import type { Metadata } from "next";
-import {
-  Phone,
-  CalendarCheck,
-  Mail,
-  Filter,
-  ArrowRight,
-  CheckCircle2,
-} from "lucide-react";
+import { CtaBlock, Eyebrow, Placeholder } from "@/components/site/atoms";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Services | Taymar Solutions",
-  description:
-    "Explore our full suite of outbound sales services — cold calling, appointment setting, cold email, lead qualification, and commission-based sales support.",
+  description: "A small surface area, deeply executed.",
 };
 
 const services = [
   {
-    icon: Phone,
-    title: "Outbound Sales & Cold Calling",
-    description:
-      "We conduct targeted cold outreach to connect with decision-makers and generate genuine interest in your product or service. Our approach focuses on real conversations — not scripts that get ignored.",
-    outcomes: [
-      "Direct access to decision-makers in your target market",
-      "Human-led conversations that build rapport and interest",
-      "Structured call scripts refined through iterative testing",
+    n: "01",
+    title: "Cold Outreach",
+    tag: "Multi-channel",
+    body: "We design and run outbound sequences that feel like a real person reached out, because one did. Phone, email, and LinkedIn — orchestrated together, not in silos.",
+    deliverables: [
+      "ICP and target list build (500–2,500 contacts/mo)",
+      "Channel-specific messaging frameworks",
+      "Sequenced cadences across phone / email / LinkedIn",
+      "A/B testing on subject lines and opening lines",
+      "Weekly volume + reply-rate reporting",
     ],
+    right: "img-outreach",
   },
   {
-    icon: CalendarCheck,
-    title: "Appointment Setting",
-    description:
-      "We qualify leads and book meetings directly onto your calendar with prospects who match your ideal customer profile. Your team walks into every call with context.",
-    outcomes: [
-      "Pre-qualified prospects on your calendar",
-      "Full context on every booked meeting",
-      "Higher close rates from better-qualified opportunities",
-    ],
-  },
-  {
-    icon: Mail,
-    title: "Cold Email Outreach",
-    description:
-      "We design and execute outbound email campaigns that open doors. From messaging strategy to list segmentation, we focus on driving responses — not just sending volume.",
-    outcomes: [
-      "Personalized messaging sequences tailored to your ICP",
-      "Optimized send timing and follow-up cadences",
-      "Measurable response rates with continuous improvement",
-    ],
-  },
-  {
-    icon: Filter,
+    n: "02",
     title: "Lead Qualification",
-    description:
-      "Not every lead is worth your time. We filter and qualify prospects against your criteria to ensure the opportunities we deliver are relevant and sales-ready.",
-    outcomes: [
-      "Fewer wasted sales calls on unqualified leads",
-      "Clear qualification criteria aligned with your ICP",
-      "Higher pipeline-to-close conversion rates",
+    tag: "Filter & frame",
+    body: "Replies and dials don't matter if the meetings are bad. Every prospect runs through a qualification framework so your team only sees opportunities that match the criteria you set.",
+    deliverables: [
+      "BANT or custom qualification rubric",
+      "Discovery call scripts and objection trees",
+      "Lead scoring and disposition tracking",
+      "CRM updates with full conversation context",
+      "Reject-and-recycle workflows for early-stage leads",
     ],
+    right: "img-qual",
   },
   {
-    icon: CheckCircle2,
-    title: "Commission-Based Sales Support",
-    description:
-      "Our entire model is built around performance. By operating on a commission-first basis, we reduce upfront cost and align our incentives directly with your revenue growth.",
-    outcomes: [
-      "Minimal upfront financial commitment",
-      "Full alignment between our success and yours",
-      "Flexible engagement — scale based on results",
+    n: "03",
+    title: "Appointment Setting",
+    tag: "Calendar-ready",
+    body: "Booked meetings, on your calendar, with prep notes attached. Your reps walk in warm — never reading a brief two minutes before the call.",
+    deliverables: [
+      "Calendar integration with your tools (Google / Outlook / HubSpot)",
+      "Pre-call briefs delivered 24h ahead",
+      "Reschedule and no-show recovery sequences",
+      "Show-rate optimization (typical: 78–85%)",
+      "Handoff process tuned to your sales motion",
     ],
+    right: "img-cal",
   },
 ];
 
-const idealClients = [
-  "B2B companies with a proven product or service seeking consistent pipeline",
-  "Early-stage companies validating their market fit through outbound",
-  "Established businesses scaling their sales operation without adding headcount",
-  "Firms that have tried outbound internally without sustainable results",
-];
-
-export default function Services() {
+export default function ServicesPage() {
   return (
     <div>
-      {/* Header */}
-      <section className="bg-gradient-to-br from-primary-dark via-primary to-primary-light text-white">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
-          <p className="text-sm font-semibold uppercase tracking-widest text-slate-300 mb-4 fade-in">
-            Our Services
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight max-w-3xl fade-in">
-            Full-Spectrum Outbound Sales Support
-          </h1>
-          <p className="mt-6 text-lg text-slate-200 max-w-2xl leading-relaxed fade-in">
-            From research to booked meetings, we handle the entire outbound
-            pipeline so your team can focus on closing.
-          </p>
-        </div>
+      <section style={{ padding: "80px 40px 60px", maxWidth: 1280, margin: "0 auto" }}>
+        <Eyebrow num="01">Services</Eyebrow>
+        <h1 style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(56px, 7vw, 112px)", lineHeight: 0.95, letterSpacing: "-0.035em", fontWeight: 300, margin: "32px 0 32px", maxWidth: 1100 }}>
+          A small surface area, deeply executed.
+        </h1>
+        <p style={{ fontFamily: "'Geist', sans-serif", fontSize: 19, lineHeight: 1.55, color: "var(--muted)", maxWidth: 720 }}>
+          We don&apos;t sell strategy decks, branding sprints, or marketing automation. We do three things — and we do them on a commission-first basis. Here&apos;s exactly what each one looks like.
+        </p>
       </section>
 
-      {/* Service Philosophy */}
-      <section className="py-20 md:py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-slate-900 fade-in">
-              Outcomes Over Activity
-            </h2>
-            <p className="mt-4 text-lg text-slate-500 leading-relaxed fade-in">
-              We don&apos;t measure success by calls made or emails sent — we measure
-              it by meetings booked, pipeline generated, and revenue influenced.
-              Every service we provide is designed around outcomes, not vanity
-              metrics.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Detailed Service Blocks */}
-      <section className="py-10 md:py-14 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-6 space-y-8">
-          {services.map(({ icon: Icon, title, description, outcomes }, idx) => (
-            <div
-              key={title}
-              className={`flex flex-col md:flex-row gap-8 bg-white rounded-xl p-8 border border-slate-200 fade-in ${
-                idx % 2 === 1 ? "md:flex-row-reverse" : ""
-              }`}
-            >
-              <div className="md:w-1/2">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
-                  <Icon className="text-primary" size={24} />
-                </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">
-                  {title}
-                </h3>
-                <p className="text-slate-500 leading-relaxed">{description}</p>
+      {services.map((s, i) => (
+        <section key={i} style={{ padding: "100px 40px", borderTop: "1px solid var(--line)" }}>
+          <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
+            <div>
+              <div style={{ display: "flex", gap: 16, alignItems: "center", marginBottom: 24 }}>
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "var(--accent)", letterSpacing: "0.12em" }}>{s.n}</span>
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, padding: "4px 10px", border: "1px solid var(--line)", borderRadius: 999, color: "var(--muted)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                  {s.tag}
+                </span>
               </div>
-              <div className="md:w-1/2">
-                <h4 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">
-                  Outcomes & Benefits
-                </h4>
-                <ul className="space-y-3">
-                  {outcomes.map((outcome) => (
-                    <li
-                      key={outcome}
-                      className="flex items-start gap-3 text-slate-600"
-                    >
-                      <CheckCircle2
-                        className="text-primary shrink-0 mt-0.5"
-                        size={18}
-                      />
-                      <span className="leading-relaxed">{outcome}</span>
+              <h2 style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(48px, 5.5vw, 84px)", lineHeight: 0.95, letterSpacing: "-0.03em", fontWeight: 300, margin: 0 }}>{s.title}</h2>
+              <p style={{ fontFamily: "'Geist', sans-serif", fontSize: 18, lineHeight: 1.6, color: "var(--muted)", marginTop: 32, maxWidth: 540 }}>{s.body}</p>
+            </div>
+            <div>
+              <Placeholder label={s.right} aspect="4/3" />
+              <div style={{ marginTop: 32, paddingTop: 32, borderTop: "1px solid var(--line)" }}>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 20 }}>Deliverables</div>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 14 }}>
+                  {s.deliverables.map((d, j) => (
+                    <li key={j} style={{ display: "grid", gridTemplateColumns: "20px 1fr", gap: 12, fontFamily: "'Geist', sans-serif", fontSize: 15, lineHeight: 1.5, color: "var(--ink)" }}>
+                      <span style={{ color: "var(--accent)", fontFamily: "'JetBrains Mono', monospace" }}>—</span>
+                      <span>{d}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
+      ))}
 
-      {/* Who This Is For */}
-      <section className="py-20 md:py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-14 items-center">
+      <section style={{ background: "var(--ink)", color: "var(--bg)", padding: "120px 40px" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80 }}>
             <div>
-              <h2 className="text-3xl font-bold text-slate-900 fade-in">
-                Who This Is For
-              </h2>
-              <p className="mt-4 text-slate-500 leading-relaxed fade-in">
-                Our services are built for companies that need predictable
-                pipeline growth and are ready to invest in results-driven
-                outbound.
-              </p>
+              <Eyebrow num="04">Good fit if you are</Eyebrow>
+              <ul style={{ listStyle: "none", padding: 0, margin: "32px 0 0", display: "flex", flexDirection: "column", gap: 20 }}>
+                {[
+                  "A founder or sales leader at a B2B company with $20k+ ACV",
+                  "Validating a new offer and need real-market signal fast",
+                  "Already have product-market fit but lack pipeline volume",
+                  "Tired of agencies who charge whether or not the phone rings",
+                  "Selling something that benefits from a real human conversation",
+                ].map((it, i) => (
+                  <li key={i} style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "start" }}>
+                    <span style={{ color: "var(--accent)", fontFamily: "'JetBrains Mono', monospace", fontSize: 14, marginTop: 4 }}>✓</span>
+                    <span style={{ fontFamily: "'Newsreader', serif", fontSize: 22, lineHeight: 1.4, fontWeight: 300, color: "var(--bg)" }}>{it}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="space-y-4">
-              {idealClients.map((client) => (
-                <li key={client} className="flex items-start gap-3 fade-in">
-                  <ArrowRight
-                    className="text-primary shrink-0 mt-1"
-                    size={16}
-                  />
-                  <span className="text-slate-700 leading-relaxed">
-                    {client}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <div>
+              <Eyebrow num="05">Probably not a fit if</Eyebrow>
+              <ul style={{ listStyle: "none", padding: 0, margin: "32px 0 0", display: "flex", flexDirection: "column", gap: 20 }}>
+                {[
+                  "Your offer is consumer-facing or transactional",
+                  "Your average deal size is under $5k and demands volume only",
+                  "You don't yet have a sales person to take qualified meetings",
+                  "You need brand, content, or paid-media work — not outbound",
+                  "You're not ready to take 5–15 booked meetings per month",
+                ].map((it, i) => (
+                  <li key={i} style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "start" }}>
+                    <span style={{ color: "rgba(255,255,255,0.4)", fontFamily: "'JetBrains Mono', monospace", fontSize: 14, marginTop: 4 }}>✕</span>
+                    <span style={{ fontFamily: "'Newsreader', serif", fontSize: 22, lineHeight: 1.4, fontWeight: 300, color: "rgba(255,255,255,0.7)" }}>{it}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Inquiry CTA */}
-      <section className="py-20 md:py-24 bg-primary text-white">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold fade-in">
-            Ready to Discuss Your Needs?
-          </h2>
-          <p className="mt-4 text-lg text-slate-200 fade-in">
-            Tell us about your business and goals. We&apos;ll recommend the right
-            approach — no pressure, no commitments.
-          </p>
-          <div className="mt-8 fade-in">
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-accent text-white font-semibold rounded-lg hover:bg-accent-hover transition-colors"
-            >
-              Inquire About Services
-              <ArrowRight size={18} />
-            </a>
-          </div>
-        </div>
-      </section>
+      <CtaBlock variant="services" />
     </div>
   );
 }

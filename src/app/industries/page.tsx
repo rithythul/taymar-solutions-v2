@@ -1,202 +1,82 @@
-import type { Metadata } from "next";
-import {
-  Building2,
-  Factory,
-  Stethoscope,
-  Landmark,
-  GraduationCap,
-  Briefcase,
-  ArrowRight,
-  CheckCircle2,
-} from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "Industries | Taymar Solutions",
-  description:
-    "Taymar Solutions serves businesses across real estate, manufacturing, healthcare, financial services, education, and professional services.",
-};
+"use client";
+import { useState } from "react";
+import { CtaBlock, Eyebrow, Placeholder } from "@/components/site/atoms";
 
 const industries = [
-  {
-    icon: Building2,
-    title: "Real Estate",
-    description:
-      "Real estate firms rely on consistent lead flow to keep their pipeline moving. We generate qualified introductions with property investors, commercial buyers, and developers.",
-    painPoints: [
-      "Long sales cycles with unpredictable lead flow",
-      "Difficulty reaching decision-makers at scale",
-      "High cost per acquisition from inbound channels",
-    ],
-    solution:
-      "Multi-channel outreach targeting property professionals and investors with personalized messaging around portfolio opportunities and market timing.",
-  },
-  {
-    icon: Factory,
-    title: "Manufacturing",
-    description:
-      "B2B manufacturing requires precise targeting. We connect manufacturers with procurement officers, supply chain leads, and operations directors who need their solutions.",
-    painPoints: [
-      "Small buyer universe with hard-to-reach decision-makers",
-      "Complex sales processes requiring multiple touchpoints",
-      "Seasonal demand fluctuations",
-    ],
-    solution:
-      "Account-based outreach to procurement and operations leaders, with follow-up sequences tailored to manufacturing buying cycles and pain points.",
-  },
-  {
-    icon: Stethoscope,
-    title: "Healthcare",
-    description:
-      "Healthcare organizations need partners who understand compliance and long procurement cycles. We specialize in reaching hospital administrators, practice managers, and department heads.",
-    painPoints: [
-      "Regulated environment limits outreach approaches",
-      "Multiple stakeholders per buying decision",
-      "Long procurement and approval timelines",
-    ],
-    solution:
-      "Research-driven outreach that maps organizational structures and targets the right stakeholders with compliant, value-focused messaging.",
-  },
-  {
-    icon: Landmark,
-    title: "Financial Services",
-    description:
-      "Financial services firms need trust-building from the first touchpoint. We generate warm introductions for wealth management, insurance, fintech, and lending businesses.",
-    painPoints: [
-      "Trust barrier in cold outreach",
-      "Highly competitive market with noise-heavy messaging",
-      "Regulatory constraints on communication",
-    ],
-    solution:
-      "Professional, consultative outreach positioning your firm as a trusted advisor — not a cold vendor — with messaging focused on outcomes and expertise.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Education",
-    description:
-      "EdTech companies and educational service providers need to reach administrators, principals, and district leaders. We navigate the institutional buying process for you.",
-    painPoints: [
-      "Institutional budget cycles dictate buying timelines",
-      "Multiple approval layers within school districts and universities",
-      "Value demonstration required before engagement",
-    ],
-    solution:
-      "Targeted outreach to educational decision-makers with case-study-backed messaging that demonstrates ROI and addresses budget-cycle planning.",
-  },
-  {
-    icon: Briefcase,
-    title: "Professional Services",
-    description:
-      "Consultancies, agencies, and SaaS companies need a steady flow of qualified conversations. We book meetings with the executives who can sign contracts.",
-    painPoints: [
-      "Service differentiation is hard to communicate at scale",
-      "Long relationship-building cycles before conversion",
-      "High cost per qualified meeting through traditional channels",
-    ],
-    solution:
-      "Consultative outreach that communicates your unique value proposition with precision, targeting C-suite and VP-level decision-makers who have budget authority.",
-  },
+  { name: "B2B SaaS & Tech", needs: "Pipeline volume, fast feedback on ICP shifts, and AE calendars filled with the right segment.", solutions: "Tightly-scoped ICP lists, technical messaging built with your CS team, and rapid A/B on positioning angles." },
+  { name: "Professional Services", needs: "Qualified introductions to decision-makers without spending months building a referral network from scratch.", solutions: "LinkedIn-led outreach, executive-tone copy, and discovery frameworks tuned to long, relationship-driven cycles." },
+  { name: "Financial & Insurance", needs: "Compliance-aware outreach, careful list hygiene, and conversations that build trust before pitching anything.", solutions: "Reviewed scripts, suppression-list management, and qualification rubrics aligned with your compliance team." },
+  { name: "Construction & Trades", needs: "Reach into operations and procurement contacts who don't sit in a CRM and rarely answer email.", solutions: "Phone-led outreach with disciplined follow-up, plus geo-segmented list building from licensing and permit data." },
+  { name: "Healthcare Services", needs: "Practice-administrator and clinical-buyer access without burning credibility on bad timing or wrong contacts.", solutions: "Decision-mapping per facility type, HIPAA-safe data handling, and conversation frameworks built around outcomes." },
+  { name: "Logistics & Supply Chain", needs: "Direct reach into shippers, 3PLs, and ops leaders during a market that's moving every quarter.", solutions: "Multi-channel sequences with operational hooks, lane-specific list segmentation, and quarterly ICP refreshes." },
 ];
 
-export default function Industries() {
+export default function IndustriesPage() {
+  const [active, setActive] = useState(0);
   return (
     <div>
-      {/* Header */}
-      <section className="bg-gradient-to-br from-primary-dark via-primary to-primary-light text-white">
-        <div className="max-w-6xl mx-auto px-6 py-20 md:py-24">
-          <p className="text-sm font-semibold uppercase tracking-widest text-slate-300 mb-4 fade-in">
-            Industries & Solutions
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight max-w-3xl fade-in">
-            Proven Across Sectors
-          </h1>
-          <p className="mt-6 text-lg text-slate-200 max-w-2xl leading-relaxed fade-in">
-            Our outbound approach adapts to each industry&apos;s unique buying
-            dynamics, regulatory landscape, and decision-maker profiles.
-          </p>
-        </div>
+      <section style={{ padding: "80px 40px 60px", maxWidth: 1280, margin: "0 auto" }}>
+        <Eyebrow num="01">Industries</Eyebrow>
+        <h1 style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(56px, 7vw, 112px)", lineHeight: 0.95, letterSpacing: "-0.035em", fontWeight: 300, margin: "32px 0 32px" }}>
+          Where the model <em style={{ color: "var(--accent)" }}>actually works</em>.
+        </h1>
+        <p style={{ fontFamily: "'Geist', sans-serif", fontSize: 19, lineHeight: 1.55, color: "var(--muted)", maxWidth: 720 }}>
+          Outbound isn&apos;t one motion. The list, the script, and the cadence change with the buyer. These are the verticals where we&apos;ve built repeatable playbooks — and the kind of needs we typically solve for.
+        </p>
       </section>
 
-      {/* Industry Blocks */}
-      <section className="py-20 md:py-24">
-        <div className="max-w-6xl mx-auto px-6 space-y-16">
-          {industries.map(
-            ({ icon: Icon, title, description, painPoints, solution }, idx) => (
-              <div
-                key={title}
-                className={`grid md:grid-cols-2 gap-10 fade-in ${
-                  idx % 2 === 1 ? "md:[direction:rtl]" : ""
-                }`}
+      <section style={{ padding: "60px 40px 120px", maxWidth: 1280, margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 80, alignItems: "start" }}>
+          <div style={{ display: "flex", flexDirection: "column", borderTop: "1px solid var(--ink)" }}>
+            {industries.map((ind, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                style={{
+                  textAlign: "left",
+                  padding: "24px 0",
+                  background: "none",
+                  border: "none",
+                  borderBottom: "1px solid var(--line)",
+                  cursor: "pointer",
+                  display: "grid",
+                  gridTemplateColumns: "auto 1fr auto",
+                  gap: 24,
+                  alignItems: "center",
+                  color: active === i ? "var(--ink)" : "var(--muted)",
+                  transition: "color 200ms",
+                }}
               >
-                <div className={idx % 2 === 1 ? "md:[direction:ltr]" : ""}>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <Icon className="text-primary" size={22} />
-                    </div>
-                    <h2 className="text-2xl font-bold text-slate-900">
-                      {title}
-                    </h2>
-                  </div>
-                  <p className="text-slate-500 leading-relaxed">
-                    {description}
-                  </p>
-                </div>
-                <div className={idx % 2 === 1 ? "md:[direction:ltr]" : ""}>
-                  {/* Pain Points */}
-                  <h3 className="text-sm font-semibold text-accent uppercase tracking-wider mb-3">
-                    Common Pain Points
-                  </h3>
-                  <ul className="space-y-2 mb-6">
-                    {painPoints.map((point) => (
-                      <li
-                        key={point}
-                        className="flex items-start gap-2 text-slate-600 text-sm"
-                      >
-                        <span className="text-accent shrink-0 mt-0.5">•</span>
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                  {/* Solution */}
-                  <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">
-                    Our Approach
-                  </h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">
-                    {solution}
-                  </p>
-                </div>
-              </div>
-            )
-          )}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 md:py-24 bg-primary text-white">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold fade-in">
-            Don&apos;t See Your Industry?
-          </h2>
-          <p className="mt-4 text-lg text-slate-200 fade-in">
-            We&apos;ve worked across many sectors. If your business needs pipeline
-            growth, let&apos;s talk about how we can adapt our approach.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4 fade-in">
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-accent text-white font-semibold rounded-lg hover:bg-accent-hover transition-colors"
-            >
-              Get in Touch
-              <ArrowRight size={18} />
-            </a>
-            <a
-              href="/services"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-white/10 text-white font-semibold rounded-lg hover:bg-white/20 transition-colors border border-white/20"
-            >
-              View Services
-            </a>
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: active === i ? "var(--accent)" : "var(--muted)" }}>{String(i + 1).padStart(2, "0")}</span>
+                <span style={{ fontFamily: "'Newsreader', serif", fontSize: 26, fontWeight: 400, letterSpacing: "-0.015em" }}>{ind.name}</span>
+                <span style={{ fontSize: 16 }}>{active === i ? "●" : "○"}</span>
+              </button>
+            ))}
+          </div>
+          <div style={{ position: "sticky", top: 100 }}>
+            <Placeholder label={`industry — ${industries[active].name.toLowerCase()}`} aspect="4/3" />
+            <div style={{ marginTop: 40 }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 12 }}>Typical needs</div>
+              <p style={{ fontFamily: "'Newsreader', serif", fontSize: 22, lineHeight: 1.45, fontWeight: 300, letterSpacing: "-0.01em", margin: 0 }}>{industries[active].needs}</p>
+            </div>
+            <div style={{ marginTop: 40, paddingTop: 32, borderTop: "1px solid var(--line)" }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 12 }}>How we solve it</div>
+              <p style={{ fontFamily: "'Geist', sans-serif", fontSize: 16, lineHeight: 1.65, color: "var(--ink)", margin: 0 }}>{industries[active].solutions}</p>
+            </div>
           </div>
         </div>
       </section>
+
+      <section style={{ background: "var(--surface)", padding: "100px 40px", borderTop: "1px solid var(--line)", borderBottom: "1px solid var(--line)" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 2fr", gap: 80 }}>
+          <Eyebrow num="02">Why we fit</Eyebrow>
+          <p style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.25, letterSpacing: "-0.02em", fontWeight: 300, margin: 0 }}>
+            We&apos;re industry-agnostic on paper, but in practice we earn our keep when there&apos;s a <em style={{ color: "var(--accent)" }}>real human buyer</em>, a meaningful contract value, and a sales team ready to take the calls. Don&apos;t see your vertical? Tell us what you&apos;re selling — we&apos;ll tell you straight if it&apos;s a fit.
+          </p>
+        </div>
+      </section>
+
+      <CtaBlock />
     </div>
   );
 }
