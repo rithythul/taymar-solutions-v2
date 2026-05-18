@@ -183,7 +183,7 @@ export function CtaBlock({ variant = "default" }: { variant?: "default" | "servi
       ? "Three questions: who buys, what they spend, how fast you can take calls. If the math doesn't work, we say so. On the first call."
       : "If we're the wrong shop, we'll point you at one we trust. The call is free either way. We answer the phone Monday to Friday, 8a to 6p Eastern.";
   return (
-    <section style={{ padding: "120px 40px 100px", maxWidth: 1280, margin: "0 auto" }}>
+    <section data-pad-x data-pad-y-lg style={{ padding: "120px 40px 100px", maxWidth: 1280, margin: "0 auto" }}>
       <div style={{ borderTop: "2px solid var(--ink)", paddingTop: 56 }}>
         <Eyebrow>{variant === "services" ? "Next step" : "Get in touch"}</Eyebrow>
         <div style={{ marginTop: 28 }}>
@@ -193,7 +193,7 @@ export function CtaBlock({ variant = "default" }: { variant?: "default" | "servi
             <span style={{ color: "var(--rust)" }}>{sub}</span>
           </Headline>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 60, alignItems: "end", marginTop: 48 }}>
+        <div data-stack style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 60, alignItems: "end", marginTop: 48 }}>
           <p style={{ fontFamily: "var(--body)", fontSize: 18, lineHeight: 1.55, color: "var(--inkSoft)", maxWidth: 600, margin: 0 }}>
             {body}
           </p>

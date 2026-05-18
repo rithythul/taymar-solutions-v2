@@ -1,12 +1,19 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Nav } from "@/components/site/nav";
 import { Footer } from "@/components/site/footer";
 
 export const metadata: Metadata = {
-  title: "Taymar Solutions — Pipeline that pays for itself.",
+  title: "Taymar Solutions, Pipeline that pays for itself.",
   description:
-    "Commission-first outbound. We find your buyers, qualify them, and book the meetings — you only pay when we deliver.",
+    "Commission-first outbound. We find your buyers, qualify them, and book the meetings. You only pay when we deliver.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#EFEAE0",
 };
 
 export default function RootLayout({

@@ -63,3 +63,106 @@ button { font-family: inherit; }
   .page-enter { animation: none; }
   * { transition: none !important; }
 }
+
+/* ---------- Responsive layer ----------
+   Inline styles use data-* attributes as hooks. CSS here overrides via
+   !important. Touch first: stack columns, drop sticky asides, compress padding.
+*/
+
+@media (max-width: 980px) {
+  [data-pad-x] { padding-left: 24px !important; padding-right: 24px !important; }
+  [data-pad-y] { padding-top: 64px !important; padding-bottom: 64px !important; }
+  [data-pad-y-lg] { padding-top: 80px !important; padding-bottom: 80px !important; }
+
+  [data-stack] { grid-template-columns: 1fr !important; gap: 40px !important; }
+  [data-sticky] { position: static !important; top: auto !important; }
+  [data-hide-md] { display: none !important; }
+
+  [data-3col-row] { grid-template-columns: 64px 1fr !important; gap: 12px 20px !important; }
+  [data-3col-row] [data-col-stats] { grid-column: 1 / -1 !important; margin-top: 16px !important; }
+  [data-3col-row] [data-col-num] { font-size: 48px !important; }
+
+  [data-timeline-row] { grid-template-columns: auto auto !important; gap: 4px 16px !important; }
+  [data-timeline-row] [data-col-body] { grid-column: 1 / -1 !important; margin-top: 8px !important; }
+  [data-timeline-row] [data-col-yr] { font-size: 32px !important; }
+
+  [data-footer-grid] { grid-template-columns: 1fr 1fr !important; gap: 40px !important; }
+
+  [data-num-row] { grid-template-columns: 48px 1fr !important; gap: 16px !important; }
+  [data-num-row] [data-col-num] { font-size: 20px !important; }
+  [data-num-row] h3 { font-size: 22px !important; }
+
+  [data-vertical-row] { grid-template-columns: 40px 1fr 20px !important; gap: 14px !important; }
+}
+
+@media (max-width: 640px) {
+  [data-pad-x] { padding-left: 16px !important; padding-right: 16px !important; }
+  [data-pad-y] { padding-top: 48px !important; padding-bottom: 48px !important; }
+  [data-pad-y-lg] { padding-top: 64px !important; padding-bottom: 64px !important; }
+
+  [data-form-row] { grid-template-columns: 1fr !important; gap: 16px !important; }
+  [data-footer-grid] { grid-template-columns: 1fr !important; }
+  [data-footer-bottom] { flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; }
+  [data-hide-sm] { display: none !important; }
+
+  [data-dl-stack] { grid-template-columns: 1fr !important; gap: 4px 0 !important; }
+  [data-dl-stack] dt { font-size: 11px !important; margin-top: 8px; }
+
+  [data-hero-row] { flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; }
+  [data-banner] { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+
+  /* hero headline floor */
+  h1 { font-size: clamp(44px, 13vw, 84px) !important; }
+}
+
+/* Mobile nav drawer */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 2px solid var(--ink);
+  padding: 10px 12px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex-direction: column;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.nav-drawer {
+  display: none;
+  flex-direction: column;
+  background: var(--paper);
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  padding: 12px 24px 28px;
+}
+.nav-drawer a {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.nav-drawer a[data-active="true"] { color: var(--rust); }
+.nav-drawer a:last-of-type { border-bottom: none; }
+.nav-drawer-cta { margin-top: 18px; }
+
+@media (max-width: 980px) {
+  .nav-desktop { display: none !important; }
+  .nav-toggle { display: inline-flex; }
+  .nav-drawer.open { display: flex; }
+}

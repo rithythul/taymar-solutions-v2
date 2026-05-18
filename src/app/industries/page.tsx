@@ -46,7 +46,7 @@ export default function IndustriesPage() {
   const ind = industries[active];
   return (
     <div>
-      <section style={{ padding: "80px 40px 60px", maxWidth: 1280, margin: "0 auto" }}>
+      <section data-pad-x style={{ padding: "80px 40px 60px", maxWidth: 1280, margin: "0 auto" }}>
         <Eyebrow>Industries</Eyebrow>
         <div style={{ marginTop: 32 }}>
           <Headline size="xxl" tag="h1">
@@ -60,8 +60,8 @@ export default function IndustriesPage() {
         </p>
       </section>
 
-      <section style={{ padding: "60px 40px 120px", maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 80, alignItems: "start" }}>
+      <section data-pad-x style={{ padding: "60px 40px 120px", maxWidth: 1280, margin: "0 auto" }}>
+        <div data-stack style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 80, alignItems: "start" }}>
           <div style={{ display: "flex", flexDirection: "column", borderTop: "3px solid var(--ink)" }}>
             {industries.map((i, idx) => {
               const on = active === idx;
@@ -103,7 +103,7 @@ export default function IndustriesPage() {
               );
             })}
           </div>
-          <div style={{ position: "sticky", top: 100 }}>
+          <div data-sticky style={{ position: "sticky", top: 100 }}>
             <div>
               <div style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 14 }}>
                 Typical needs
@@ -130,8 +130,8 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      <section style={{ background: "var(--paperRaised)", padding: "100px 40px", borderTop: "3px solid var(--ink)", borderBottom: "3px solid var(--ink)" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 2fr", gap: 80, alignItems: "start" }}>
+      <section data-pad-x data-pad-y-lg style={{ background: "var(--paperRaised)", padding: "100px 40px", borderTop: "3px solid var(--ink)", borderBottom: "3px solid var(--ink)" }}>
+        <div data-stack style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 2fr", gap: 80, alignItems: "start" }}>
           <Eyebrow>Why we fit</Eyebrow>
           <p style={{ fontFamily: "var(--display)", fontWeight: 600, fontSize: "clamp(28px, 3.4vw, 48px)", lineHeight: 1.08, letterSpacing: "-0.005em", textTransform: "uppercase", margin: 0, color: "var(--ink)" }}>
             We&apos;re industry-agnostic on paper. In practice, we earn our keep when there&apos;s a real human buyer, a meaningful contract, and a sales team ready to take the calls. Don&apos;t see your vertical? Tell us what you sell. We&apos;ll tell you straight if it&apos;s a fit.

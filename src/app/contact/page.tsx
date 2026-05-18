@@ -45,13 +45,15 @@ export default function ContactPage() {
   const [form, setForm] = useState<Form>({ name: "", email: "", company: "", role: "", revenue: "", help: "outreach", message: "" });
   const [errors, setErrors] = useState<Partial<Record<keyof Form, string | null>>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
 
   const update = (k: keyof Form, v: string) => {
     setForm((f) => ({ ...f, [k]: v }));
     if (errors[k]) setErrors((e) => ({ ...e, [k]: null }));
   };
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     const errs: Partial<Record<keyof Form, string>> = {};
     if (!form.name.trim()) errs.name = "Required";
@@ -59,15 +61,32 @@ export default function ContactPage() {
     if (!form.company.trim()) errs.company = "Required";
     if (!form.message.trim() || form.message.length < 10) errs.message = "Tell us a bit more (10+ chars)";
     setErrors(errs);
-    if (Object.keys(errs).length === 0) {
+    if (Object.keys(errs).length > 0) return;
+
+    setSending(true);
+    setServerError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Send failed. Try again or email hello@taymarsolutions.com.");
+      }
       setSubmitted(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (err) {
+      setServerError(err instanceof Error ? err.message : "Send failed. Try again or email hello@taymarsolutions.com.");
+    } finally {
+      setSending(false);
     }
   };
 
   if (submitted) {
     return (
-      <section style={{ padding: "120px 40px 200px", maxWidth: 920, margin: "0 auto", minHeight: "70vh" }}>
+      <section data-pad-x data-pad-y-lg style={{ padding: "120px 40px 200px", maxWidth: 920, margin: "0 auto", minHeight: "70vh" }}>
         <Eyebrow num="✓">Message received</Eyebrow>
         <div style={{ marginTop: 32 }}>
           <Headline size="xl" tag="h1">
@@ -81,7 +100,7 @@ export default function ContactPage() {
         </p>
         <div style={{ marginTop: 48, padding: 32, background: "var(--ink)", color: "var(--paper)" }}>
           <div style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--rust)", marginBottom: 20 }}>What you sent</div>
-          <dl style={{ display: "grid", gridTemplateColumns: "180px 1fr", gap: "12px 24px", margin: 0, fontFamily: "var(--body)", fontSize: 15 }}>
+          <dl data-dl-stack style={{ display: "grid", gridTemplateColumns: "180px 1fr", gap: "12px 24px", margin: 0, fontFamily: "var(--body)", fontSize: 15 }}>
             <dt style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>Name</dt>
             <dd style={{ margin: 0, color: "var(--paper)" }}>{form.name}</dd>
             <dt style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>Email</dt>
@@ -112,7 +131,7 @@ export default function ContactPage() {
 
   return (
     <div>
-      <section style={{ padding: "80px 40px 60px", maxWidth: 1280, margin: "0 auto" }}>
+      <section data-pad-x style={{ padding: "80px 40px 60px", maxWidth: 1280, margin: "0 auto" }}>
         <Eyebrow>Contact</Eyebrow>
         <div style={{ marginTop: 32 }}>
           <Headline size="xxl" tag="h1">
@@ -123,8 +142,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section style={{ padding: "40px 40px 120px", maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 80 }}>
+      <section data-pad-x style={{ padding: "40px 40px 120px", maxWidth: 1280, margin: "0 auto" }}>
+        <div data-stack style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 80 }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
             <div>
               <div style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 10 }}>Email or call</div>
@@ -179,7 +198,7 @@ export default function ContactPage() {
             <Field label="Name" req error={errors.name}>
               <input value={form.name} onChange={(e) => update("name", e.target.value)} style={inputStyle} />
             </Field>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+            <div data-form-row style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
               <Field label="Email" req error={errors.email}>
                 <input type="email" value={form.email} onChange={(e) => update("email", e.target.value)} style={inputStyle} />
               </Field>
@@ -187,7 +206,7 @@ export default function ContactPage() {
                 <input value={form.role} onChange={(e) => update("role", e.target.value)} placeholder="Founder / Head of Sales / etc." style={inputStyle} />
               </Field>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr", gap: 24 }}>
+            <div data-form-row style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr", gap: 24 }}>
               <Field label="Company" req error={errors.company}>
                 <input value={form.company} onChange={(e) => update("company", e.target.value)} style={inputStyle} />
               </Field>
@@ -203,7 +222,7 @@ export default function ContactPage() {
               </Field>
             </div>
             <Field label="What do you need help with?">
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
+              <div data-form-row style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
                 {[
                   ["outreach", "Cold outreach"],
                   ["qualification", "Qualification"],
@@ -241,30 +260,37 @@ export default function ContactPage() {
                 style={{ ...inputStyle, resize: "vertical", fontFamily: "var(--body)" }}
               />
             </Field>
+            {serverError && (
+              <div style={{ padding: "14px 18px", border: "2px solid var(--rust)", background: "rgba(162,58,26,0.06)", fontFamily: "var(--body)", fontSize: 15, color: "var(--ink)" }}>
+                {serverError}
+              </div>
+            )}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 12, gap: 24, flexWrap: "wrap" }}>
               <span style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, color: "var(--muted)", letterSpacing: "0.14em", textTransform: "uppercase" }}>
                 We don&apos;t share your details. Period.
               </span>
               <button
                 type="submit"
+                disabled={sending}
                 style={{
-                  background: "var(--rust)",
+                  background: sending ? "var(--muted)" : "var(--rust)",
                   color: "white",
-                  border: "2px solid var(--rust)",
+                  border: "2px solid " + (sending ? "var(--muted)" : "var(--rust)"),
                   padding: "20px 36px",
                   fontFamily: "var(--display)",
                   fontWeight: 800,
                   fontSize: 16,
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
-                  cursor: "pointer",
+                  cursor: sending ? "not-allowed" : "pointer",
                   display: "inline-flex",
                   alignItems: "center",
                   gap: 14,
                   lineHeight: 1,
+                  transition: "background 160ms, border-color 160ms",
                 }}
               >
-                Send message <span>→</span>
+                {sending ? "Sending…" : "Send message"} <span>→</span>
               </button>
             </div>
           </form>

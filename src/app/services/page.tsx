@@ -56,7 +56,7 @@ const services = [
 export default function ServicesPage() {
   return (
     <div>
-      <section style={{ padding: "80px 40px 60px", maxWidth: 1280, margin: "0 auto" }}>
+      <section data-pad-x style={{ padding: "80px 40px 60px", maxWidth: 1280, margin: "0 auto" }}>
         <Eyebrow>Services</Eyebrow>
         <div style={{ marginTop: 32 }}>
           <Headline size="xxl" tag="h1">
@@ -71,8 +71,8 @@ export default function ServicesPage() {
       </section>
 
       {services.map((s, i) => (
-        <section key={i} style={{ padding: "100px 40px", borderTop: "3px solid var(--ink)" }}>
-          <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
+        <section key={i} data-pad-x data-pad-y style={{ padding: "100px 40px", borderTop: "3px solid var(--ink)" }}>
+          <div data-stack style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
             <div>
               <div style={{ display: "flex", gap: 18, alignItems: "center", marginBottom: 24 }}>
                 <span style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: 14, letterSpacing: "0.14em", color: "var(--rust)" }}>{s.n}</span>
@@ -130,9 +130,9 @@ export default function ServicesPage() {
         </section>
       ))}
 
-      <section style={{ background: "var(--ink)", color: "var(--paper)", padding: "120px 40px" }}>
+      <section data-pad-x data-pad-y-lg style={{ background: "var(--ink)", color: "var(--paper)", padding: "120px 40px" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80 }}>
+          <div data-stack style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80 }}>
             <div>
               <Eyebrow tone="dark">Good fit</Eyebrow>
               <ul style={{ listStyle: "none", padding: 0, margin: "32px 0 0", display: "flex", flexDirection: "column", gap: 0 }}>

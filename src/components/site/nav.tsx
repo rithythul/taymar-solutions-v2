@@ -15,27 +15,60 @@ const items = [
 export function Nav() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  const opaque = scrolled || open;
+
   return (
     <header
       style={{
         position: "sticky",
         top: 0,
         zIndex: 40,
-        background: scrolled ? "var(--paper)" : "transparent",
-        borderBottom: scrolled ? "2px solid var(--ink)" : "2px solid transparent",
+        background: opaque ? "var(--paper)" : "transparent",
+        borderBottom: opaque ? "2px solid var(--ink)" : "2px solid transparent",
         transition: "background 200ms ease, border-color 200ms ease",
       }}
     >
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "20px 40px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <div
+        data-pad-x
+        style={{
+          maxWidth: 1280,
+          margin: "0 auto",
+          padding: "18px 40px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 16,
+        }}
+      >
         <Link href="/" style={{ color: "var(--ink)", textDecoration: "none" }}>
           <Logo size={20} accent="var(--rust)" />
         </Link>
-        <nav style={{ display: "flex", gap: 4, alignItems: "center" }}>
+        <nav className="nav-desktop" style={{ display: "flex", gap: 4, alignItems: "center" }}>
           {items.map((i) => {
             const active = pathname === i.href;
             return (
@@ -65,6 +98,28 @@ export function Nav() {
             </Btn>
           </div>
         </nav>
+        <button
+          type="button"
+          className="nav-toggle"
+          aria-expanded={open}
+          aria-controls="nav-drawer"
+          aria-label={open ? "Close menu" : "Open menu"}
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
+      <div id="nav-drawer" className={`nav-drawer${open ? " open" : ""}`}>
+        {items.map((i) => (
+          <Link key={i.href} href={i.href} data-active={pathname === i.href}>
+            {i.label}
+          </Link>
+        ))}
+        <div className="nav-drawer-cta">
+          <Btn href="/contact">Book a call</Btn>
+        </div>
       </div>
     </header>
   );

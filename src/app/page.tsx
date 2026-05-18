@@ -3,10 +3,10 @@ import { Btn, CtaBlock, Eyebrow, Headline } from "@/components/site/atoms";
 export default function HomePage() {
   return (
     <div>
-      <section style={{ padding: "60px 40px 80px", maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 56 }}>
+      <section data-pad-x style={{ padding: "60px 40px 80px", maxWidth: 1280, margin: "0 auto" }}>
+        <div data-hero-row style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 56, gap: 16, flexWrap: "wrap" }}>
           <Eyebrow>Sales outsourcing · Austin, TX</Eyebrow>
-          <span style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 13, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--muted)" }}>
+          <span data-hide-sm style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 13, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--muted)" }}>
             Est. 2024 · 5 reps · No AI agents
           </span>
         </div>
@@ -15,7 +15,7 @@ export default function HomePage() {
           style={{
             fontFamily: "var(--display)",
             fontWeight: 800,
-            fontSize: "clamp(72px, 11vw, 220px)",
+            fontSize: "clamp(56px, 11vw, 220px)",
             lineHeight: 0.84,
             letterSpacing: "-0.015em",
             textTransform: "uppercase",
@@ -44,7 +44,7 @@ export default function HomePage() {
           for itself.
         </h1>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 80, marginTop: 64, alignItems: "start" }}>
+        <div data-stack style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 80, marginTop: 64, alignItems: "start" }}>
           <p style={{ fontFamily: "var(--body)", fontSize: 21, lineHeight: 1.5, color: "var(--ink)", margin: 0, maxWidth: 560, fontWeight: 400 }}>
             We&apos;re a small outbound team in Austin. We find your buyers, qualify them, and book the meetings. You pay us when meetings land on your calendar. No retainer, no SOW, no head-count.
           </p>
@@ -72,8 +72,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section style={{ background: "var(--ink)", color: "var(--paper)", padding: "32px 40px", overflow: "hidden", borderTop: "2px solid var(--rust)", borderBottom: "2px solid var(--rust)" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 40, flexWrap: "wrap" }}>
+      <section data-pad-x style={{ background: "var(--ink)", color: "var(--paper)", padding: "32px 40px", overflow: "hidden", borderTop: "2px solid var(--rust)", borderBottom: "2px solid var(--rust)" }}>
+        <div data-banner style={{ maxWidth: 1280, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
           <span style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: "clamp(28px, 3.4vw, 48px)", letterSpacing: "-0.005em", textTransform: "uppercase", lineHeight: 1 }}>
             No meetings, no invoice.
           </span>
@@ -83,8 +83,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section style={{ padding: "120px 40px", maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 80 }}>
+      <section data-pad-x data-pad-y-lg style={{ padding: "120px 40px", maxWidth: 1280, margin: "0 auto" }}>
+        <div data-stack style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 80 }}>
           <Eyebrow>The pitch, in two sentences</Eyebrow>
           <div>
             <p style={{ fontFamily: "var(--display)", fontWeight: 600, fontSize: "clamp(32px, 3.8vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.01em", textTransform: "uppercase", color: "var(--ink)", margin: 0 }}>
@@ -94,8 +94,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section style={{ padding: "60px 40px 100px", maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", marginBottom: 48 }}>
+      <section data-pad-x style={{ padding: "60px 40px 100px", maxWidth: 1280, margin: "0 auto" }}>
+        <div data-hero-row style={{ display: "flex", justifyContent: "space-between", alignItems: "end", marginBottom: 48, gap: 24, flexWrap: "wrap" }}>
           <div>
             <Eyebrow>What we do</Eyebrow>
             <div style={{ marginTop: 24 }}>
@@ -149,6 +149,7 @@ export default function HomePage() {
           ].map((s, i, arr) => (
             <article
               key={s.n}
+              data-3col-row
               style={{
                 display: "grid",
                 gridTemplateColumns: "120px 1.2fr 1fr",
@@ -158,7 +159,7 @@ export default function HomePage() {
                 alignItems: "start",
               }}
             >
-              <span style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: 88, lineHeight: 0.9, color: "var(--rust)", letterSpacing: "-0.01em" }}>
+              <span data-col-num style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: 88, lineHeight: 0.9, color: "var(--rust)", letterSpacing: "-0.01em" }}>
                 {s.n}
               </span>
               <div>
@@ -169,7 +170,7 @@ export default function HomePage() {
                   {s.body}
                 </p>
               </div>
-              <dl style={{ margin: 0, display: "grid", gridTemplateColumns: "auto 1fr", gap: "14px 24px", alignContent: "start" }}>
+              <dl data-col-stats style={{ margin: 0, display: "grid", gridTemplateColumns: "auto 1fr", gap: "14px 24px", alignContent: "start" }}>
                 {s.stats.map(([k, v]) => (
                   <div key={k} style={{ display: "contents" }}>
                     <dt style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--muted)" }}>
@@ -186,10 +187,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section style={{ background: "var(--ink)", color: "var(--paper)", padding: "120px 40px", marginTop: 40 }}>
+      <section data-pad-x data-pad-y-lg style={{ background: "var(--ink)", color: "var(--paper)", padding: "120px 40px", marginTop: 40 }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 80, alignItems: "start" }}>
-            <div style={{ position: "sticky", top: 120 }}>
+          <div data-stack style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 80, alignItems: "start" }}>
+            <div data-sticky style={{ position: "sticky", top: 120 }}>
               <Eyebrow tone="dark">Why Taymar</Eyebrow>
               <div style={{ marginTop: 24 }}>
                 <Headline size="xl" tag="h2" color="var(--paper)">
@@ -212,6 +213,7 @@ export default function HomePage() {
               ].map(([t, b], i, arr) => (
                 <div
                   key={i}
+                  data-num-row
                   style={{
                     padding: "32px 0",
                     borderTop: "1px solid rgba(255,255,255,0.16)",
@@ -222,7 +224,7 @@ export default function HomePage() {
                     alignItems: "baseline",
                   }}
                 >
-                  <span style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: 28, color: "var(--rust)", letterSpacing: "-0.005em" }}>
+                  <span data-col-num style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: 28, color: "var(--rust)", letterSpacing: "-0.005em" }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
@@ -240,9 +242,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section style={{ padding: "120px 40px", maxWidth: 1280, margin: "0 auto" }}>
+      <section data-pad-x data-pad-y-lg style={{ padding: "120px 40px", maxWidth: 1280, margin: "0 auto" }}>
         <Eyebrow>The math</Eyebrow>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginTop: 40 }}>
+        <div data-stack style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginTop: 40 }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
             {[
               ["1,200", "Contacts worked per quarter"],
@@ -250,7 +252,7 @@ export default function HomePage() {
               ["18–24", "Qualified meetings booked"],
               ["$300–$650", "Commission per booked meeting"],
             ].map(([k, v]) => (
-              <div key={k} style={{ display: "grid", gridTemplateColumns: "260px 1fr", gap: 32, alignItems: "baseline", borderBottom: "1px solid var(--line)", paddingBottom: 24 }}>
+              <div key={k} data-num-row style={{ display: "grid", gridTemplateColumns: "260px 1fr", gap: 32, alignItems: "baseline", borderBottom: "1px solid var(--line)", paddingBottom: 24 }}>
                 <span style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: "clamp(48px, 5.6vw, 88px)", letterSpacing: "-0.015em", color: "var(--ink)", lineHeight: 0.95 }}>
                   {k}
                 </span>
@@ -274,8 +276,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section style={{ background: "var(--paperRaised)", borderTop: "2px solid var(--ink)", borderBottom: "2px solid var(--ink)", padding: "100px 40px" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 2fr", gap: 80, alignItems: "start" }}>
+      <section data-pad-x data-pad-y-lg style={{ background: "var(--paperRaised)", borderTop: "2px solid var(--ink)", borderBottom: "2px solid var(--ink)", padding: "100px 40px" }}>
+        <div data-stack style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 2fr", gap: 80, alignItems: "start" }}>
           <div>
             <Eyebrow>Who we serve</Eyebrow>
             <div style={{ marginTop: 24 }}>
@@ -305,6 +307,7 @@ export default function HomePage() {
               <a
                 key={i}
                 href="/industries"
+                data-vertical-row
                 style={{
                   padding: "28px 0",
                   borderTop: "1px solid var(--line)",

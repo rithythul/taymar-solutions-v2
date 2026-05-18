@@ -8,7 +8,7 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <div>
-      <section style={{ padding: "80px 40px 40px", maxWidth: 1280, margin: "0 auto" }}>
+      <section data-pad-x style={{ padding: "80px 40px 40px", maxWidth: 1280, margin: "0 auto" }}>
         <Eyebrow>About</Eyebrow>
         <div style={{ marginTop: 32 }}>
           <Headline size="xxl" tag="h1">
@@ -21,9 +21,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section style={{ padding: "60px 40px 100px", maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 80, alignItems: "start" }}>
-          <aside style={{ position: "sticky", top: 100 }}>
+      <section data-pad-x style={{ padding: "60px 40px 100px", maxWidth: 1280, margin: "0 auto" }}>
+        <div data-stack style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 80, alignItems: "start" }}>
+          <aside data-sticky style={{ position: "sticky", top: 100 }}>
             <div style={{ background: "var(--ink)", color: "var(--paper)", padding: "36px 32px", position: "relative" }}>
               <div style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: 13, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--rust)", marginBottom: 20 }}>
                 Founder note
@@ -66,9 +66,9 @@ Ben Marchiony · Founder · Austin, TX · Est. 2024
         </div>
       </section>
 
-      <section style={{ padding: "100px 40px", borderTop: "3px solid var(--ink)" }}>
+      <section data-pad-x data-pad-y-lg style={{ padding: "100px 40px", borderTop: "3px solid var(--ink)" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 60, alignItems: "start" }}>
+          <div data-stack style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 60, alignItems: "start" }}>
             <div>
               <Eyebrow>How we work</Eyebrow>
               <div style={{ marginTop: 24 }}>
@@ -88,6 +88,7 @@ Ben Marchiony · Founder · Austin, TX · Est. 2024
               ].map(([t, b], i, arr) => (
                 <div
                   key={i}
+                  data-num-row
                   style={{
                     padding: "36px 0",
                     borderTop: "1px solid var(--line)",
@@ -98,7 +99,7 @@ Ben Marchiony · Founder · Austin, TX · Est. 2024
                     alignItems: "baseline",
                   }}
                 >
-                  <span style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: 40, color: "var(--rust)", letterSpacing: "-0.01em", lineHeight: 0.9 }}>
+                  <span data-col-num style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: 40, color: "var(--rust)", letterSpacing: "-0.01em", lineHeight: 0.9 }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
@@ -116,7 +117,7 @@ Ben Marchiony · Founder · Austin, TX · Est. 2024
         </div>
       </section>
 
-      <section style={{ padding: "120px 40px", maxWidth: 1280, margin: "0 auto" }}>
+      <section data-pad-x data-pad-y-lg style={{ padding: "120px 40px", maxWidth: 1280, margin: "0 auto" }}>
         <Eyebrow>Timeline</Eyebrow>
         <div style={{ marginTop: 40, display: "flex", flexDirection: "column", borderTop: "3px solid var(--ink)" }}>
           {[
@@ -128,6 +129,7 @@ Ben Marchiony · Founder · Austin, TX · Est. 2024
           ].map(([yr, q, body], i, arr) => (
             <div
               key={i}
+              data-timeline-row
               style={{
                 padding: "32px 0",
                 borderBottom: i === arr.length - 1 ? "3px solid var(--ink)" : "1px solid var(--line)",
@@ -137,9 +139,9 @@ Ben Marchiony · Founder · Austin, TX · Est. 2024
                 alignItems: "baseline",
               }}
             >
-              <span style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: 48, letterSpacing: "-0.01em", color: "var(--ink)", lineHeight: 0.9 }}>{yr}</span>
+              <span data-col-yr style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: 48, letterSpacing: "-0.01em", color: "var(--ink)", lineHeight: 0.9 }}>{yr}</span>
               <span style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 13, letterSpacing: "0.16em", color: "var(--rust)", textTransform: "uppercase" }}>{q}</span>
-              <span style={{ fontFamily: "var(--body)", fontSize: 17, lineHeight: 1.6, color: "var(--ink)", maxWidth: 720 }}>{body}</span>
+              <span data-col-body style={{ fontFamily: "var(--body)", fontSize: 17, lineHeight: 1.6, color: "var(--ink)", maxWidth: 720 }}>{body}</span>
             </div>
           ))}
         </div>

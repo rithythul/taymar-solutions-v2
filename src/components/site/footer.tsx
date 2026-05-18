@@ -42,9 +42,9 @@ export function Footer(): ReactNode {
   const pathname = usePathname();
   if (pathname === "/contact") return null;
   return (
-    <footer style={{ background: "var(--ink)", color: "var(--paper)", padding: "80px 40px 40px", marginTop: 80, borderTop: "4px solid var(--rust)" }}>
+    <footer data-pad-x style={{ background: "var(--ink)", color: "var(--paper)", padding: "80px 40px 40px", marginTop: 80, borderTop: "4px solid var(--rust)" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 60, paddingBottom: 60, borderBottom: "1px solid rgba(255,255,255,0.16)" }}>
+        <div data-footer-grid style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 60, paddingBottom: 60, borderBottom: "1px solid rgba(255,255,255,0.16)" }}>
           <div>
             <Logo size={24} color="var(--paper)" accent="var(--rust)" />
             <p style={{ marginTop: 28, fontFamily: "var(--display)", fontWeight: 600, fontSize: "clamp(22px, 2vw, 28px)", lineHeight: 1.15, textTransform: "uppercase", letterSpacing: "-0.005em", maxWidth: 420, color: "var(--paper)" }}>
@@ -86,7 +86,7 @@ export function Footer(): ReactNode {
             ]}
           />
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 28, fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, color: "rgba(255,255,255,0.55)", letterSpacing: "0.16em", textTransform: "uppercase" }}>
+        <div data-footer-bottom style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 28, gap: 16, flexWrap: "wrap", fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, color: "rgba(255,255,255,0.55)", letterSpacing: "0.16em", textTransform: "uppercase" }}>
           <span>© 2026 Taymar Solutions, LLC</span>
           <span>Commission-First · Pipeline-Driven</span>
           <span>v1.0 — Est. 2024</span>
