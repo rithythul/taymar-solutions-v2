@@ -1,14 +1,14 @@
 "use client";
 import { useState, type CSSProperties, type ReactNode } from "react";
-import { Eyebrow } from "@/components/site/atoms";
+import { Eyebrow, Headline } from "@/components/site/atoms";
 
 const inputStyle: CSSProperties = {
   width: "100%",
-  padding: "14px 16px",
-  border: "1px solid var(--line)",
-  background: "var(--surface)",
-  fontFamily: "'Geist', sans-serif",
-  fontSize: 15,
+  padding: "16px 18px",
+  border: "2px solid var(--line)",
+  background: "var(--paperRaised)",
+  fontFamily: "var(--body)",
+  fontSize: 16,
   color: "var(--ink)",
   outline: "none",
   borderRadius: 0,
@@ -18,11 +18,11 @@ const inputStyle: CSSProperties = {
 
 function Field({ label, children, req, error }: { label: string; children: ReactNode; req?: boolean; error?: string | null }) {
   return (
-    <label style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-      <span style={{ display: "flex", justifyContent: "space-between", fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: error ? "var(--accent)" : "var(--muted)" }}>
+    <label style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+      <span style={{ display: "flex", justifyContent: "space-between", fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: error ? "var(--rust)" : "var(--ink)" }}>
         <span>
           {label}
-          {req && <span style={{ color: "var(--accent)" }}> *</span>}
+          {req && <span style={{ color: "var(--rust)" }}> *</span>}
         </span>
         {error && <span>{error}</span>}
       </span>
@@ -69,37 +69,41 @@ export default function ContactPage() {
     return (
       <section style={{ padding: "120px 40px 200px", maxWidth: 920, margin: "0 auto", minHeight: "70vh" }}>
         <Eyebrow num="✓">Message received</Eyebrow>
-        <h1 style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(56px, 7vw, 96px)", lineHeight: 0.98, letterSpacing: "-0.035em", fontWeight: 300, margin: "32px 0 32px" }}>
-          Thanks, {form.name.split(" ")[0]}. <em style={{ color: "var(--accent)" }}>We&apos;ll be in touch within one business day.</em>
-        </h1>
-        <p style={{ fontFamily: "'Geist', sans-serif", fontSize: 18, lineHeight: 1.6, color: "var(--muted)", maxWidth: 600 }}>
-          A founder or rep will email you to schedule a 30-minute discovery call. We&apos;ll come prepared with questions about {form.company} — no slides, no pitch.
+        <div style={{ marginTop: 32 }}>
+          <Headline size="xl" tag="h1">
+            Thanks, {form.name.split(" ")[0]}.
+            <br />
+            <span style={{ color: "var(--rust)" }}>We&apos;ll email back within one business day.</span>
+          </Headline>
+        </div>
+        <p style={{ fontFamily: "var(--body)", fontSize: 18, lineHeight: 1.6, color: "var(--inkSoft)", maxWidth: 600, marginTop: 32 }}>
+          We&apos;ll come prepared with questions about {form.company}. No slides, no pitch. If we don&apos;t think we&apos;re a fit, we&apos;ll say so and point you somewhere that is.
         </p>
-        <div style={{ marginTop: 48, padding: 32, background: "var(--surface)", border: "1px solid var(--line)" }}>
-          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 16 }}>What you submitted</div>
-          <dl style={{ display: "grid", gridTemplateColumns: "140px 1fr", gap: "10px 24px", margin: 0, fontFamily: "'Geist', sans-serif", fontSize: 14 }}>
-            <dt style={{ color: "var(--muted)" }}>Name</dt>
-            <dd style={{ margin: 0 }}>{form.name}</dd>
-            <dt style={{ color: "var(--muted)" }}>Email</dt>
-            <dd style={{ margin: 0 }}>{form.email}</dd>
-            <dt style={{ color: "var(--muted)" }}>Company</dt>
-            <dd style={{ margin: 0 }}>{form.company}</dd>
+        <div style={{ marginTop: 48, padding: 32, background: "var(--ink)", color: "var(--paper)" }}>
+          <div style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--rust)", marginBottom: 20 }}>What you sent</div>
+          <dl style={{ display: "grid", gridTemplateColumns: "180px 1fr", gap: "12px 24px", margin: 0, fontFamily: "var(--body)", fontSize: 15 }}>
+            <dt style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>Name</dt>
+            <dd style={{ margin: 0, color: "var(--paper)" }}>{form.name}</dd>
+            <dt style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>Email</dt>
+            <dd style={{ margin: 0, color: "var(--paper)" }}>{form.email}</dd>
+            <dt style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>Company</dt>
+            <dd style={{ margin: 0, color: "var(--paper)" }}>{form.company}</dd>
             {form.role && (
               <>
-                <dt style={{ color: "var(--muted)" }}>Role</dt>
-                <dd style={{ margin: 0 }}>{form.role}</dd>
+                <dt style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>Role</dt>
+                <dd style={{ margin: 0, color: "var(--paper)" }}>{form.role}</dd>
               </>
             )}
             {form.revenue && (
               <>
-                <dt style={{ color: "var(--muted)" }}>Revenue stage</dt>
-                <dd style={{ margin: 0 }}>{form.revenue}</dd>
+                <dt style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>Revenue</dt>
+                <dd style={{ margin: 0, color: "var(--paper)" }}>{form.revenue}</dd>
               </>
             )}
-            <dt style={{ color: "var(--muted)" }}>Looking for</dt>
-            <dd style={{ margin: 0 }}>{form.help}</dd>
-            <dt style={{ color: "var(--muted)" }}>Notes</dt>
-            <dd style={{ margin: 0 }}>{form.message}</dd>
+            <dt style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>Looking for</dt>
+            <dd style={{ margin: 0, color: "var(--paper)" }}>{form.help}</dd>
+            <dt style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>Notes</dt>
+            <dd style={{ margin: 0, color: "var(--paper)" }}>{form.message}</dd>
           </dl>
         </div>
       </section>
@@ -109,51 +113,64 @@ export default function ContactPage() {
   return (
     <div>
       <section style={{ padding: "80px 40px 60px", maxWidth: 1280, margin: "0 auto" }}>
-        <Eyebrow num="01">Contact</Eyebrow>
-        <h1 style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(56px, 7vw, 112px)", lineHeight: 0.95, letterSpacing: "-0.035em", fontWeight: 300, margin: "32px 0 0", maxWidth: 1100 }}>
-          Tell us what you&apos;re selling. <em style={{ color: "var(--accent)" }}>We&apos;ll tell you straight if it&apos;s a fit.</em>
-        </h1>
+        <Eyebrow>Contact</Eyebrow>
+        <div style={{ marginTop: 32 }}>
+          <Headline size="xxl" tag="h1">
+            Tell us what you sell.
+            <br />
+            <span style={{ color: "var(--rust)" }}>We&apos;ll tell you straight.</span>
+          </Headline>
+        </div>
       </section>
 
       <section style={{ padding: "40px 40px 120px", maxWidth: 1280, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 80 }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
             <div>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Email</div>
-              <a href="mailto:hello@taymarsolutions.com" style={{ fontFamily: "'Newsreader', serif", fontSize: 26, fontWeight: 400, letterSpacing: "-0.015em", color: "var(--ink)", textDecoration: "none" }}>
+              <div style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 10 }}>Email or call</div>
+              <a href="mailto:hello@taymarsolutions.com" style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: "clamp(20px, 2.2vw, 28px)", letterSpacing: "0.005em", textTransform: "uppercase", color: "var(--ink)", textDecoration: "none", borderBottom: "2px solid var(--rust)", paddingBottom: 4, display: "inline-block" }}>
                 hello@taymarsolutions.com
               </a>
-            </div>
-            <div>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Phone</div>
-              <a href="tel:+18135550142" style={{ fontFamily: "'Newsreader', serif", fontSize: 26, fontWeight: 400, letterSpacing: "-0.015em", color: "var(--ink)", textDecoration: "none" }}>
-                (813) 555-0142
-              </a>
-            </div>
-            <div>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Service area</div>
-              <div style={{ fontFamily: "'Geist', sans-serif", fontSize: 16, lineHeight: 1.6, color: "var(--ink)" }}>
-                Headquartered in Tampa, FL.
-                <br />
-                Working with B2B clients across
-                <br />
-                the United States and Canada.
+              <div style={{ marginTop: 14 }}>
+                <a href="tel:+15127668447" style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: "clamp(20px, 2.2vw, 28px)", letterSpacing: "0.02em", color: "var(--ink)", textDecoration: "none" }}>
+                  (512) 766-8447
+                </a>
+              </div>
+              <div style={{ marginTop: 12, fontFamily: "var(--body)", fontSize: 14, color: "var(--inkSoft)" }}>
+                Goes to a real inbox. A rep or Ben (the founder) will reply, usually same day.
               </div>
             </div>
             <div>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>Hours</div>
-              <div style={{ fontFamily: "'Geist', sans-serif", fontSize: 16, lineHeight: 1.6, color: "var(--ink)" }}>
-                Monday – Friday
+              <div style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 10 }}>Where we are</div>
+              <div style={{ fontFamily: "var(--body)", fontSize: 17, lineHeight: 1.6, color: "var(--ink)" }}>
+                Austin, TX.
                 <br />
-                8:00 AM – 6:00 PM ET
+                Working with B2B clients across the US and Canada.
               </div>
             </div>
-            <div style={{ marginTop: 24, padding: 24, background: "var(--surface)", border: "1px solid var(--line)" }}>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--accent)", marginBottom: 8 }}>What happens next</div>
-              <ol style={{ paddingLeft: 18, margin: 0, fontFamily: "'Geist', sans-serif", fontSize: 14, lineHeight: 1.7, color: "var(--ink)" }}>
-                <li>We reply within one business day.</li>
-                <li>30-min discovery call — your offer, your ICP.</li>
-                <li>If we&apos;re a fit, we draft a commission structure and start.</li>
+            <div>
+              <div style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 10 }}>When we work</div>
+              <div style={{ fontFamily: "var(--body)", fontSize: 17, lineHeight: 1.6, color: "var(--ink)" }}>
+                Monday to Friday, 8a to 6p ET.
+                <br />
+                Slack with clients during those hours.
+              </div>
+            </div>
+            <div style={{ marginTop: 24, background: "var(--ink)", color: "var(--paper)", padding: 28 }}>
+              <div style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--rust)", marginBottom: 16 }}>What happens next</div>
+              <ol style={{ paddingLeft: 0, margin: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 14 }}>
+                {[
+                  "We reply within one business day. Sometimes faster.",
+                  "30-minute discovery call on Zoom or phone, your choice.",
+                  "If we’re a fit, we draft a commission structure on the spot. If not, we tell you why.",
+                ].map((s, i) => (
+                  <li key={i} style={{ display: "grid", gridTemplateColumns: "32px 1fr", gap: 14, fontFamily: "var(--body)", fontSize: 15, lineHeight: 1.55, color: "var(--paper)" }}>
+                    <span style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: 16, color: "var(--rust)", letterSpacing: "0.08em" }}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span>{s}</span>
+                  </li>
+                ))}
               </ol>
             </div>
           </div>
@@ -178,15 +195,15 @@ export default function ContactPage() {
                 <select value={form.revenue} onChange={(e) => update("revenue", e.target.value)} style={inputStyle}>
                   <option value="">Select…</option>
                   <option>Pre-revenue</option>
-                  <option>$0 – $500k ARR</option>
-                  <option>$500k – $2M ARR</option>
-                  <option>$2M – $10M ARR</option>
+                  <option>$0 to $500k ARR</option>
+                  <option>$500k to $2M ARR</option>
+                  <option>$2M to $10M ARR</option>
                   <option>$10M+ ARR</option>
                 </select>
               </Field>
             </div>
             <Field label="What do you need help with?">
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
                 {[
                   ["outreach", "Cold outreach"],
                   ["qualification", "Qualification"],
@@ -196,11 +213,14 @@ export default function ContactPage() {
                     key={v}
                     style={{
                       padding: "14px 16px",
-                      border: form.help === v ? "1px solid var(--ink)" : "1px solid var(--line)",
+                      border: "2px solid " + (form.help === v ? "var(--ink)" : "var(--line)"),
                       background: form.help === v ? "var(--ink)" : "transparent",
-                      color: form.help === v ? "var(--bg)" : "var(--ink)",
-                      fontFamily: "'Geist', sans-serif",
-                      fontSize: 14,
+                      color: form.help === v ? "var(--paper)" : "var(--ink)",
+                      fontFamily: "var(--display)",
+                      fontWeight: 700,
+                      fontSize: 13,
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
                       cursor: "pointer",
                       textAlign: "center",
                       transition: "all 160ms",
@@ -217,27 +237,31 @@ export default function ContactPage() {
                 value={form.message}
                 onChange={(e) => update("message", e.target.value)}
                 rows={5}
-                placeholder="What do you sell, who buys it, and what's your average deal size?"
-                style={{ ...inputStyle, resize: "vertical", fontFamily: "'Geist', sans-serif" }}
+                placeholder="What do you sell, who buys it, and what’s your average deal size? Anything else we should know."
+                style={{ ...inputStyle, resize: "vertical", fontFamily: "var(--body)" }}
               />
             </Field>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 12 }}>
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "var(--muted)", letterSpacing: "0.08em" }}>We never share your details. Period.</span>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 12, gap: 24, flexWrap: "wrap" }}>
+              <span style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, color: "var(--muted)", letterSpacing: "0.14em", textTransform: "uppercase" }}>
+                We don&apos;t share your details. Period.
+              </span>
               <button
                 type="submit"
                 style={{
-                  background: "var(--accent)",
+                  background: "var(--rust)",
                   color: "white",
-                  border: "none",
-                  padding: "18px 32px",
-                  fontFamily: "'Geist', sans-serif",
-                  fontSize: 15,
-                  fontWeight: 500,
-                  letterSpacing: "-0.01em",
+                  border: "2px solid var(--rust)",
+                  padding: "20px 36px",
+                  fontFamily: "var(--display)",
+                  fontWeight: 800,
+                  fontSize: 16,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
                   cursor: "pointer",
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: 12,
+                  gap: 14,
+                  lineHeight: 1,
                 }}
               >
                 Send message <span>→</span>

@@ -1,143 +1,237 @@
-import { Btn, CtaBlock, Eyebrow, Placeholder, Stat } from "@/components/site/atoms";
+import { Btn, CtaBlock, Eyebrow, Headline } from "@/components/site/atoms";
 
 export default function HomePage() {
   return (
     <div>
-      <section style={{ padding: "60px 40px 100px", maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 80, alignItems: "end" }}>
-          <div>
-            <Eyebrow num="01">Sales outsourcing, performance-first</Eyebrow>
-            <h1
+      <section style={{ padding: "60px 40px 80px", maxWidth: 1280, margin: "0 auto" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 56 }}>
+          <Eyebrow>Sales outsourcing · Austin, TX</Eyebrow>
+          <span style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 13, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--muted)" }}>
+            Est. 2024 · 5 reps · No AI agents
+          </span>
+        </div>
+
+        <h1
+          style={{
+            fontFamily: "var(--display)",
+            fontWeight: 800,
+            fontSize: "clamp(72px, 11vw, 220px)",
+            lineHeight: 0.84,
+            letterSpacing: "-0.015em",
+            textTransform: "uppercase",
+            margin: 0,
+            color: "var(--ink)",
+          }}
+        >
+          Pipeline
+          <br />
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "0.18em" }}>
+            <span>that</span>
+            <span
               style={{
-                fontFamily: "'Newsreader', serif",
-                fontSize: "clamp(56px, 7.2vw, 116px)",
-                lineHeight: 0.95,
-                letterSpacing: "-0.035em",
-                fontWeight: 300,
-                margin: "32px 0 0",
-                color: "var(--ink)",
+                background: "var(--rust)",
+                color: "var(--rustInk)",
+                padding: "0 0.18em",
+                fontWeight: 900,
+                transform: "skewX(-4deg)",
+                display: "inline-block",
               }}
             >
-              Pipeline that <em style={{ fontStyle: "italic", color: "var(--accent)" }}>pays</em>
-              <br />
-              for itself.
-            </h1>
-            <p style={{ fontFamily: "'Geist', sans-serif", fontSize: 19, lineHeight: 1.55, color: "var(--muted)", maxWidth: 560, marginTop: 36 }}>
-              Taymar Solutions is a commission-first outbound team. We find your buyers, qualify them, and book the meetings — you only pay when we deliver. No retainers, no risk, no head-count.
+              pays
+            </span>
+          </span>
+          <br />
+          for itself.
+        </h1>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 80, marginTop: 64, alignItems: "start" }}>
+          <p style={{ fontFamily: "var(--body)", fontSize: 21, lineHeight: 1.5, color: "var(--ink)", margin: 0, maxWidth: 560, fontWeight: 400 }}>
+            We&apos;re a small outbound team in Austin. We find your buyers, qualify them, and book the meetings. You pay us when meetings land on your calendar. No retainer, no SOW, no head-count.
+          </p>
+          <div
+            style={{
+              background: "var(--ink)",
+              color: "var(--paper)",
+              padding: "32px 36px",
+              position: "relative",
+            }}
+          >
+            <div style={{ position: "absolute", top: -8, left: -8, right: 8, bottom: 8, border: "2px solid var(--ink)", pointerEvents: "none" }} />
+            <span style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--rust)", display: "block", marginBottom: 16 }}>
+              What this isn&apos;t
+            </span>
+            <p style={{ fontFamily: "var(--body)", fontSize: 17, lineHeight: 1.55, margin: 0 }}>
+              Not a $9k/month retainer. Not a 47-slide strategy deck. Not a tool that promises &ldquo;100x your outbound with AI.&rdquo; A team of five who pick up the phone.
             </p>
-            <div style={{ display: "flex", gap: 16, marginTop: 40, alignItems: "center" }}>
-              <Btn size="lg" href="/contact">Book a discovery call</Btn>
-              <Btn variant="plain" href="/services">How it works</Btn>
-            </div>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-            <Placeholder label="hero — sales floor / outreach" aspect="3/4" />
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "var(--muted)", letterSpacing: "0.1em", textTransform: "uppercase", display: "flex", justifyContent: "space-between" }}>
-              <span>Est. 2024</span>
-              <span>Tampa, FL</span>
-            </div>
-          </div>
+        </div>
+
+        <div style={{ display: "flex", gap: 20, marginTop: 56, alignItems: "center", flexWrap: "wrap" }}>
+          <Btn size="lg" href="/contact">Book a discovery call</Btn>
+          <Btn variant="plain" href="/services">How it works</Btn>
         </div>
       </section>
 
-      <section style={{ borderTop: "1px solid var(--line)", borderBottom: "1px solid var(--line)", padding: "20px 0", overflow: "hidden", background: "var(--surface)" }}>
-        <div style={{ display: "flex", gap: 64, fontFamily: "'JetBrains Mono', monospace", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--muted)", whiteSpace: "nowrap", animation: "marquee 40s linear infinite" }}>
-          {"Cold outreach · Lead qualification · Appointment setting · Multi-channel · Phone · Email · LinkedIn · ICP definition · Objection handling · Pipeline reporting · "
-            .repeat(3)
-            .split(" · ")
-            .map((s, i) => (
-              <span key={i}>{s}</span>
-            ))}
+      <section style={{ background: "var(--ink)", color: "var(--paper)", padding: "32px 40px", overflow: "hidden", borderTop: "2px solid var(--rust)", borderBottom: "2px solid var(--rust)" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 40, flexWrap: "wrap" }}>
+          <span style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: "clamp(28px, 3.4vw, 48px)", letterSpacing: "-0.005em", textTransform: "uppercase", lineHeight: 1 }}>
+            No meetings, no invoice.
+          </span>
+          <span style={{ fontFamily: "var(--display)", fontWeight: 600, fontSize: 14, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>
+            That&apos;s the whole pitch ↘
+          </span>
         </div>
       </section>
 
       <section style={{ padding: "120px 40px", maxWidth: 1280, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 80 }}>
-          <Eyebrow num="02">A short introduction</Eyebrow>
+          <Eyebrow>The pitch, in two sentences</Eyebrow>
           <div>
-            <p style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1.25, letterSpacing: "-0.02em", color: "var(--ink)", fontWeight: 300, margin: 0 }}>
-              We partner with companies that need consistent pipeline growth — but don&apos;t want the cost, ramp time, or risk of building a full in-house outbound team.{" "}
-              <em style={{ color: "var(--accent)" }}>Our model is simple: we win when you win.</em>
+            <p style={{ fontFamily: "var(--display)", fontWeight: 600, fontSize: "clamp(32px, 3.8vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.01em", textTransform: "uppercase", color: "var(--ink)", margin: 0 }}>
+              Most outbound agencies invoice whether or not the phone rings. We don&apos;t. Our reps get paid when your reps get meetings. So do we.
             </p>
           </div>
         </div>
       </section>
 
-      <section style={{ padding: "100px 40px", maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", marginBottom: 60 }}>
+      <section style={{ padding: "60px 40px 100px", maxWidth: 1280, margin: "0 auto" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", marginBottom: 48 }}>
           <div>
-            <Eyebrow num="03">What we do</Eyebrow>
-            <h2 style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(40px, 4.5vw, 72px)", letterSpacing: "-0.025em", lineHeight: 1, fontWeight: 300, margin: "24px 0 0" }}>
-              Three motions.
-              <br />
-              One outcome.
-            </h2>
+            <Eyebrow>What we do</Eyebrow>
+            <div style={{ marginTop: 24 }}>
+              <Headline size="xl" tag="h2">
+                Phone. Email.
+                <br />
+                LinkedIn.
+                <br />
+                <span style={{ color: "var(--rust)" }}>One line on the invoice.</span>
+              </Headline>
+            </div>
           </div>
-          <Btn variant="plain" href="/services">All services</Btn>
+          <Btn variant="plain" href="/services">Full services</Btn>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 0, borderTop: "1px solid var(--ink)" }}>
+
+        <div style={{ borderTop: "3px solid var(--ink)" }}>
           {[
-            { n: "01", title: "Cold Outreach", body: "Multi-channel sequences across phone, email, and LinkedIn — built around your ICP, voiced like a human, paced to land." },
-            { n: "02", title: "Lead Qualification", body: "Every conversation runs through a structured qualification framework. You only see opportunities that match your criteria." },
-            { n: "03", title: "Appointment Setting", body: "Booked meetings on your calendar, with full context delivered to your sales team — handoff-ready, never cold." },
-          ].map((s, i) => (
-            <div
-              key={i}
+            {
+              n: "01",
+              title: "Cold outreach",
+              body:
+                "Phone Tuesday. Email Wednesday. LinkedIn Friday. Not because we read a Reddit thread about it, because that's the rhythm that gets calls back.",
+              stats: [
+                ["Volume", "600–2,400 / mo"],
+                ["Reply rate", "Typically 6–11%"],
+                ["Channels", "Phone-led, email + LinkedIn"],
+              ] as [string, string][],
+            },
+            {
+              n: "02",
+              title: "Qualification",
+              body:
+                "Replies and dials don't matter if the meetings are wrong. Every prospect runs through your criteria before they reach your calendar.",
+              stats: [
+                ["Reject rate", "About 1 in 3"],
+                ["Rubric", "Yours, not ours"],
+                ["Records", "Transcripts in your CRM"],
+              ] as [string, string][],
+            },
+            {
+              n: "03",
+              title: "Appointment setting",
+              body:
+                "Calendar invite plus a one-page brief, sent to your rep 24 hours before. They walk in with context. The buyer doesn’t hear “remind me what you do again?”",
+              stats: [
+                ["Target show rate", "78–85%"],
+                ["Brief", "Buyer, role, problem"],
+                ["Handoff", "Tuned to your motion"],
+              ] as [string, string][],
+            },
+          ].map((s, i, arr) => (
+            <article
+              key={s.n}
               style={{
-                padding: "40px 32px 48px",
-                borderRight: i < 2 ? "1px solid var(--line)" : "none",
-                borderBottom: "1px solid var(--ink)",
-                display: "flex",
-                flexDirection: "column",
-                gap: 20,
-                minHeight: 300,
+                display: "grid",
+                gridTemplateColumns: "120px 1.2fr 1fr",
+                gap: 48,
+                padding: "56px 0",
+                borderBottom: i === arr.length - 1 ? "3px solid var(--ink)" : "1px solid var(--line)",
+                alignItems: "start",
               }}
             >
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "var(--accent)", letterSpacing: "0.1em" }}>{s.n}</div>
-              <h3 style={{ fontFamily: "'Newsreader', serif", fontSize: 32, fontWeight: 400, letterSpacing: "-0.02em", margin: 0 }}>{s.title}</h3>
-              <p style={{ fontFamily: "'Geist', sans-serif", fontSize: 15, lineHeight: 1.6, color: "var(--muted)", margin: 0, flex: 1 }}>{s.body}</p>
-            </div>
+              <span style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: 88, lineHeight: 0.9, color: "var(--rust)", letterSpacing: "-0.01em" }}>
+                {s.n}
+              </span>
+              <div>
+                <h3 style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: "clamp(36px, 4vw, 64px)", letterSpacing: "-0.005em", textTransform: "uppercase", margin: 0, lineHeight: 0.92 }}>
+                  {s.title}
+                </h3>
+                <p style={{ fontFamily: "var(--body)", fontSize: 17, lineHeight: 1.6, color: "var(--inkSoft)", margin: "20px 0 0", maxWidth: 460 }}>
+                  {s.body}
+                </p>
+              </div>
+              <dl style={{ margin: 0, display: "grid", gridTemplateColumns: "auto 1fr", gap: "14px 24px", alignContent: "start" }}>
+                {s.stats.map(([k, v]) => (
+                  <div key={k} style={{ display: "contents" }}>
+                    <dt style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--muted)" }}>
+                      {k}
+                    </dt>
+                    <dd style={{ margin: 0, fontFamily: "var(--display)", fontWeight: 600, fontSize: 20, color: "var(--ink)", letterSpacing: "0.01em" }}>
+                      {v}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </article>
           ))}
         </div>
       </section>
 
-      <section style={{ background: "var(--ink)", color: "var(--bg)", padding: "120px 40px", marginTop: 60 }}>
+      <section style={{ background: "var(--ink)", color: "var(--paper)", padding: "120px 40px", marginTop: 40 }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: 80, alignItems: "start" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 80, alignItems: "start" }}>
             <div style={{ position: "sticky", top: 120 }}>
-              <Eyebrow num="04">Why Taymar</Eyebrow>
-              <h2 style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(40px, 4.5vw, 64px)", lineHeight: 1, letterSpacing: "-0.025em", fontWeight: 300, margin: "24px 0 0", color: "var(--bg)" }}>
-                Skin in the
-                <br />
-                same game.
-              </h2>
-              <p style={{ fontFamily: "'Geist', sans-serif", fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.7)", marginTop: 32, maxWidth: 360 }}>
-                Most outbound agencies invoice whether or not the phone rings. We don&apos;t. The structure forces alignment — if your pipeline isn&apos;t moving, neither is ours.
+              <Eyebrow tone="dark">Why Taymar</Eyebrow>
+              <div style={{ marginTop: 24 }}>
+                <Headline size="xl" tag="h2" color="var(--paper)">
+                  We get paid
+                  <br />
+                  when <span style={{ color: "var(--rust)" }}>you do</span>.
+                </Headline>
+              </div>
+              <p style={{ fontFamily: "var(--body)", fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.7)", marginTop: 32, maxWidth: 380 }}>
+                That&apos;s the whole pitch. Five things follow from it. Read them, then ignore the ones that don&apos;t matter to you.
               </p>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
               {[
-                ["Commission-first pricing", "You don't carry the burden of a base. We earn on results, so we're motivated to deliver them."],
-                ["No long-term lock-in", "Month-to-month engagements. Stay because the numbers work, not because a contract says you have to."],
-                ["Real humans on the phone", "We don't outsource the actual conversations. Your prospects talk to people who can hold a real exchange."],
-                ["Process you can audit", "Cadence, scripts, lists, and reporting — fully documented. You see what's running, what's working, and what isn't."],
-                ["Built for the messy middle", "Whether you're validating a new offer or scaling an established one, the model flexes to where you actually are."],
-              ].map(([t, b], i) => (
+                ["Commission, not retainer", "We get paid per booked, qualified meeting that shows up. No invoice for “strategy hours.” If your pipeline is flat this month, so is ours."],
+                ["Month-to-month", "Stay because the numbers work. Leave when they don’t. No 12-month MSA with an auto-renew clause buried on page 14."],
+                ["Humans on the phone", "Our reps work from frameworks, not scripts. Your prospects talk to people who can answer a follow-up question without hitting mute."],
+                ["Friday email, every Friday", "Dials, conversations, meetings, no-shows. The same dashboard we look at, mailed to you. If a week looks bad, we say so before you ask."],
+                ["We’ll tell you no", "If your offer isn’t ready for outbound, the call ends with us saying that. We’d rather lose a discovery than burn a quarter on a list that won’t convert."],
+              ].map(([t, b], i, arr) => (
                 <div
                   key={i}
                   style={{
                     padding: "32px 0",
-                    borderBottom: i < 4 ? "1px solid rgba(255,255,255,0.12)" : "none",
-                    borderTop: i === 0 ? "1px solid rgba(255,255,255,0.12)" : "none",
+                    borderTop: "1px solid rgba(255,255,255,0.16)",
+                    borderBottom: i === arr.length - 1 ? "1px solid rgba(255,255,255,0.16)" : "none",
                     display: "grid",
-                    gridTemplateColumns: "auto 1fr",
+                    gridTemplateColumns: "72px 1fr",
                     gap: 32,
+                    alignItems: "baseline",
                   }}
                 >
-                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "rgba(255,255,255,0.4)" }}>{String(i + 1).padStart(2, "0")}</span>
+                  <span style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: 28, color: "var(--rust)", letterSpacing: "-0.005em" }}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <div>
-                    <h3 style={{ fontFamily: "'Newsreader', serif", fontSize: 26, fontWeight: 400, letterSpacing: "-0.015em", margin: 0, color: "var(--bg)" }}>{t}</h3>
-                    <p style={{ fontFamily: "'Geist', sans-serif", fontSize: 15, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", margin: "10px 0 0", maxWidth: 540 }}>{b}</p>
+                    <h3 style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 28, letterSpacing: "0.005em", textTransform: "uppercase", margin: 0, color: "var(--paper)" }}>
+                      {t}
+                    </h3>
+                    <p style={{ fontFamily: "var(--body)", fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.7)", margin: "10px 0 0", maxWidth: 560 }}>
+                      {b}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -147,38 +241,89 @@ export default function HomePage() {
       </section>
 
       <section style={{ padding: "120px 40px", maxWidth: 1280, margin: "0 auto" }}>
-        <Eyebrow num="05">By the numbers</Eyebrow>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 40, marginTop: 60, paddingTop: 60, borderTop: "1px solid var(--line)" }}>
-          <Stat value="0" suffix="$" label="Up-front cost. You don't pay until a meeting books." />
-          <Stat value="38" label="Industries served across SaaS, services, and trades." />
-          <Stat value="14" suffix=" days" label="Typical ramp from kickoff to first booked call." />
-          <Stat value="3.2" suffix="x" label="Average pipeline lift in our clients' first quarter." />
+        <Eyebrow>The math</Eyebrow>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginTop: 40 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+            {[
+              ["1,200", "Contacts worked per quarter"],
+              ["350", "Live conversations"],
+              ["18–24", "Qualified meetings booked"],
+              ["$300–$650", "Commission per booked meeting"],
+            ].map(([k, v]) => (
+              <div key={k} style={{ display: "grid", gridTemplateColumns: "260px 1fr", gap: 32, alignItems: "baseline", borderBottom: "1px solid var(--line)", paddingBottom: 24 }}>
+                <span style={{ fontFamily: "var(--display)", fontWeight: 800, fontSize: "clamp(48px, 5.6vw, 88px)", letterSpacing: "-0.015em", color: "var(--ink)", lineHeight: 0.95 }}>
+                  {k}
+                </span>
+                <span style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 14, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--muted)" }}>
+                  {v}
+                </span>
+              </div>
+            ))}
+          </div>
+          <div>
+            <p style={{ fontFamily: "var(--display)", fontWeight: 600, fontSize: "clamp(24px, 2.6vw, 36px)", lineHeight: 1.1, letterSpacing: "-0.005em", textTransform: "uppercase", color: "var(--ink)", margin: 0 }}>
+              A typical quarter. Roughly.
+            </p>
+            <p style={{ fontFamily: "var(--body)", fontSize: 17, lineHeight: 1.6, color: "var(--inkSoft)", marginTop: 24, maxWidth: 460 }}>
+              That math doesn&apos;t work for everyone. If your average contract is $4k and your sales team can&apos;t take more than two meetings a week, we&apos;re not the right fit. Call us and we&apos;ll tell you that on the first conversation.
+            </p>
+            <div style={{ marginTop: 32 }}>
+              <Btn variant="ghost" href="/services">See the work</Btn>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section style={{ padding: "60px 40px 120px", maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 80, alignItems: "start" }}>
+      <section style={{ background: "var(--paperRaised)", borderTop: "2px solid var(--ink)", borderBottom: "2px solid var(--ink)", padding: "100px 40px" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 2fr", gap: 80, alignItems: "start" }}>
           <div>
-            <Eyebrow num="06">Who we serve</Eyebrow>
-            <h2 style={{ fontFamily: "'Newsreader', serif", fontSize: "clamp(36px, 4vw, 56px)", lineHeight: 1.05, letterSpacing: "-0.025em", fontWeight: 300, margin: "24px 0 32px" }}>
-              Built for B2B teams that
-              <br />
-              <em style={{ color: "var(--accent)" }}>need motion</em>, not theater.
-            </h2>
-            <Btn variant="ghost" href="/industries">See all industries</Btn>
+            <Eyebrow>Who we serve</Eyebrow>
+            <div style={{ marginTop: 24 }}>
+              <Headline size="lg" tag="h2">
+                B2B teams
+                <br />
+                that need
+                <br />
+                <span style={{ color: "var(--rust)" }}>motion,</span>
+                <br />
+                not theater.
+              </Headline>
+            </div>
+            <div style={{ marginTop: 32 }}>
+              <Btn variant="ghost" href="/industries">All six verticals</Btn>
+            </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {["B2B SaaS & technology", "Professional services", "Financial & insurance", "Construction & trades", "Healthcare services", "Logistics & supply chain"].map((label, i) => (
+            {[
+              "B2B SaaS & technology",
+              "Professional services",
+              "Financial & insurance",
+              "Construction & trades",
+              "Healthcare services",
+              "Logistics & supply chain",
+            ].map((label, i, arr) => (
               <a
                 key={i}
                 href="/industries"
-                style={{ padding: "28px 0", borderBottom: "1px solid var(--line)", display: "flex", justifyContent: "space-between", alignItems: "center", textDecoration: "none", color: "var(--ink)" }}
+                style={{
+                  padding: "28px 0",
+                  borderTop: "1px solid var(--line)",
+                  borderBottom: i === arr.length - 1 ? "1px solid var(--line)" : "none",
+                  display: "grid",
+                  gridTemplateColumns: "60px 1fr 24px",
+                  gap: 24,
+                  alignItems: "center",
+                  textDecoration: "none",
+                  color: "var(--ink)",
+                }}
               >
-                <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
-                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "var(--muted)" }}>{String(i + 1).padStart(2, "0")}</span>
-                  <span style={{ fontFamily: "'Newsreader', serif", fontSize: 28, fontWeight: 400, letterSpacing: "-0.015em" }}>{label}</span>
-                </div>
-                <span style={{ color: "var(--muted)" }}>↗</span>
+                <span style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: 14, letterSpacing: "0.14em", color: "var(--rust)" }}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span style={{ fontFamily: "var(--display)", fontWeight: 700, fontSize: "clamp(24px, 2.6vw, 36px)", letterSpacing: "0.005em", textTransform: "uppercase", lineHeight: 1 }}>
+                  {label}
+                </span>
+                <span style={{ fontFamily: "var(--display)", fontWeight: 700, color: "var(--muted)" }}>↗</span>
               </a>
             ))}
           </div>

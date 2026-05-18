@@ -26,15 +26,14 @@ export function Nav() {
         position: "sticky",
         top: 0,
         zIndex: 40,
-        background: scrolled ? "color-mix(in oklab, var(--bg) 88%, transparent)" : "transparent",
-        backdropFilter: scrolled ? "blur(10px)" : "none",
-        borderBottom: scrolled ? "1px solid var(--line)" : "1px solid transparent",
-        transition: "all 240ms ease",
+        background: scrolled ? "var(--paper)" : "transparent",
+        borderBottom: scrolled ? "2px solid var(--ink)" : "2px solid transparent",
+        transition: "background 200ms ease, border-color 200ms ease",
       }}
     >
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "20px 40px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <Link href="/" style={{ color: "var(--ink)", textDecoration: "none" }}>
-          <Logo size={20} />
+          <Logo size={20} accent="var(--rust)" />
         </Link>
         <nav style={{ display: "flex", gap: 4, alignItems: "center" }}>
           {items.map((i) => {
@@ -44,18 +43,19 @@ export function Nav() {
                 key={i.href}
                 href={i.href}
                 style={{
-                  padding: "8px 14px",
-                  fontFamily: "'Geist', sans-serif",
+                  padding: "10px 14px",
+                  fontFamily: "var(--display)",
                   fontSize: 14,
-                  fontWeight: 500,
+                  fontWeight: 700,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
                   color: active ? "var(--ink)" : "var(--muted)",
                   position: "relative",
-                  letterSpacing: "-0.01em",
                   textDecoration: "none",
                 }}
               >
                 {i.label}
-                {active && <span style={{ position: "absolute", bottom: 2, left: 14, right: 14, height: 1, background: "var(--accent)" }}></span>}
+                {active && <span style={{ position: "absolute", bottom: 4, left: 14, right: 14, height: 3, background: "var(--rust)" }}></span>}
               </Link>
             );
           })}
